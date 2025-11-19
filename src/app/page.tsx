@@ -375,17 +375,21 @@ export default function TeaShopPage() {
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                whileHoverTransition={{
-                                    type: "spring",
-                                    stiffness: 400,
-                                    damping: 10,
+                                whileHover={{
+                                    scale: 1.05,
+                                    transition: {
+                                        type: "spring",
+                                        stiffness: 400,
+                                        damping: 10,
+                                    }
                                 }}
-                                whileTapTransition={{
-                                    type: "spring",
-                                    stiffness: 500,
-                                    damping: 15,
+                                whileTap={{
+                                    scale: 0.95,
+                                    transition: {
+                                        type: "spring",
+                                        stiffness: 500,
+                                        damping: 15,
+                                    }
                                 }}
                             >
                                 <Image src="/চাপাত.png" alt="চাপাত tea" fill className="object-contain p-1" />
