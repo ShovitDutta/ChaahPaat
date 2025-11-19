@@ -1,5 +1,5 @@
 {
-  "name": "chahpatt",
+  "name": "chapatt",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,5 +26,13 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShovitDutta/chapatt.git"
+  },
+  "homepage": "https://chapatt.vercel.app/",
+  "bugs": {
+    "url": "https://github.com/ShovitDutta/chapatt/issues"
   }
 }
