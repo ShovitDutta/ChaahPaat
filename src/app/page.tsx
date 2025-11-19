@@ -561,7 +561,7 @@ export default function TeaShopPage() {
                     >
                         Brewing Guide
                     </motion.h2>
-                    <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
+                    <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
                         {[
                             {
                                 title: "Water",
