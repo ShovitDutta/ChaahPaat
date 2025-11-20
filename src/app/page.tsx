@@ -26,7 +26,7 @@ function Squircle({ children, className = "", innerClassName = "", ariaLabel, id
             id={id}
             style={{
                 backgroundColor: palette.squircle,
-                borderRadius: "2.5rem",
+                borderRadius: "2rem",
                 border: `1px solid ${palette.dark}15`,
             }}
         >
@@ -60,7 +60,7 @@ export default function TeaShopPage() {
             <motion.header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 sm:py-3 lg:py-4" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ type: "spring", stiffness: 100 }}>
                 <div className="mx-auto max-w-7xl">
                     <motion.div
-                        className={`rounded-full backdrop-blur-2xl bg-white/10 p-2 sm:p-3 transition-all duration-500 ${isScrolled ? "shadow-2xl" : "shadow-lg"}`}
+                        className={`rounded-2xl backdrop-blur-2xl bg-white/10 p-2 sm:p-3 transition-all duration-500 ${isScrolled ? "shadow-2xl" : "shadow-lg"}`}
                         style={{
                             backgroundColor: isScrolled ? `${palette.squircle}F5` : `${palette.squircle}E5`,
                             backdropFilter: "blur(20px)",
@@ -71,7 +71,7 @@ export default function TeaShopPage() {
                         <nav className="flex items-center justify-between gap-2 sm:gap-4 px-2 sm:px-4">
                             <motion.div className="flex items-center gap-2 sm:gap-3" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400 }}>
                                 <motion.div
-                                    className="relative h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 rounded-3xl overflow-hidden p-2 sm:p-3 shadow-inner"
+                                    className="relative h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 rounded-2xl overflow-hidden p-2 sm:p-3 shadow-inner"
                                     style={{ backgroundColor: palette.accent }}
                                     whileHover={{ rotate: [0, -5, 5, 0] }}
                                     transition={{ duration: 0.5 }}
@@ -93,7 +93,7 @@ export default function TeaShopPage() {
                                     <motion.a
                                         key={item}
                                         href={item === "About" ? "#about" : `#${item.toLowerCase()}`}
-                                        className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-lg gradient-border-hover"
+                                        className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-2xl gradient-border-hover"
                                         style={{ color: palette.dark }}
                                         whileHover={{ y: -2 }}
                                         initial={{ opacity: 0, y: -20 }}
@@ -113,7 +113,7 @@ export default function TeaShopPage() {
 
                             <motion.a
                                 href="#collection"
-                                className="rounded-full px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all gradient-border-hover"
+                                className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all gradient-border-hover"
                                 style={{
                                     backgroundColor: palette.accent,
                                     color: palette.dark,
@@ -160,7 +160,7 @@ export default function TeaShopPage() {
 
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp}>
                                 <motion.a
-                                    className="rounded-full px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover"
                                     href="#collection"
                                     style={{
                                         backgroundColor: palette.accent,
@@ -172,7 +172,7 @@ export default function TeaShopPage() {
                                     Explore Collection
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-full px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover"
                                     href="#brewing"
                                     style={{
                                         border: `2px solid ${palette.dark}20`,
@@ -193,11 +193,11 @@ export default function TeaShopPage() {
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
                             >
-                                <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-emerald-200 via-lime-200 to-yellow-100 opacity-30 blur-3xl" />
+                                <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-emerald-200 via-lime-200 to-yellow-100 opacity-30 blur-3xl" />
                             </motion.div>
                             <motion.a
                                 href="#collection"
-                                className="absolute h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer"
+                                className="absolute h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
                                 style={{
                                     backgroundColor: palette.squircle,
                                 }}
@@ -286,7 +286,7 @@ export default function TeaShopPage() {
                     </motion.div>
                     <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                         <motion.div
-                            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-sm gradient-border-hover"
+                            className="rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm gradient-border-hover"
                             style={{
                                 backgroundColor: `${palette.card}F0`,
                                 border: `1px solid ${palette.dark}08`,
@@ -363,7 +363,7 @@ export default function TeaShopPage() {
                         ].map((brew, i) => (
                             <motion.div key={brew.title} variants={fadeInUp} className="group col-span-1" whileHover={{ y: -5 }}>
                                 <motion.div
-                                    className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
+                                    className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
                                     style={{
                                         backgroundColor: `${palette.card}F0`,
                                         border: `1px solid ${palette.dark}08`,
@@ -399,7 +399,7 @@ export default function TeaShopPage() {
                         <div className="flex gap-2 sm:gap-3 lg:gap-4">
                             <motion.a
                                 href="tel:+916900234165"
-                                className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
+                                className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
                                 style={{
                                     border: `1px solid ${palette.dark}20`,
                                     color: palette.dark,
@@ -414,7 +414,7 @@ export default function TeaShopPage() {
                             </motion.a>
                             <motion.a
                                 href="tel:+919883617119"
-                                className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
+                                className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
                                 style={{
                                     border: `1px solid ${palette.dark}20`,
                                     color: palette.dark,

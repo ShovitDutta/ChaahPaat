@@ -45,7 +45,7 @@ function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; 
           <motion.div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
           <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div
-              className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl pointer-events-auto"
+              className="bg-white rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl pointer-events-auto"
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
@@ -99,7 +99,7 @@ function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; 
               </div>
 
               <motion.button
-                className="w-full rounded-full py-3 font-semibold"
+                className="w-full rounded-2xl py-3 font-semibold"
                 style={{ backgroundColor: palette.accent, color: palette.dark }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -201,12 +201,12 @@ export default function TeaCollection() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.div
-                className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-linear-to-br from-emerald-400/20 to-lime-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 rounded-2xl bg-linear-to-br from-emerald-400/20 to-lime-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 initial={false}
                 animate={hoveredTea === tea.name ? { scale: 1.1 } : { scale: 1 }}
               />
               <div
-                className="relative rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 h-full shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm gradient-border-hover"
+                className="relative rounded-2xl p-4 sm:p-5 lg:p-6 h-full shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm gradient-border-hover"
                 style={{
                   backgroundColor: `${palette.card}F0`,
                   border: `1px solid ${palette.dark}08`,
@@ -237,7 +237,7 @@ export default function TeaCollection() {
                     </p>
                   </div>
                   <motion.button
-                    className="w-full mt-3 sm:mt-4 lg:mt-6 rounded-full py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all gradient-border-hover"
+                    className="w-full mt-3 sm:mt-4 lg:mt-6 rounded-2xl py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all gradient-border-hover"
                     style={{
                       backgroundColor: hoveredTea === tea.name ? palette.accent : palette.bg,
                       color: palette.dark,
