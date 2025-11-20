@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 const palette = {
     bg: "#FAFDF7",
-    card: "#F0F7E8",
-    squircle: "#E5F2D9",
-    accent: "#C1E0A8",
-    dark: "#2A4810",
-    shadow: "#1A2F08",
+    card: "#E8F5E0",
+    squircle: "#D9F0CC",
+    accent: "#A8D88A",
+    dark: "#213D0B",
+    shadow: "#142506",
 };
 const fadeInUp = {
     initial: { opacity: 0, y: 30 },
