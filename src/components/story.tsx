@@ -7,7 +7,7 @@ export function Story() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="about" id="about">
             <motion.div className="text-center space-y-4 sm:space-y-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }}>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">
                     About Us
                 </h2>
                 <div className="max-w-4xl mx-auto">
@@ -26,7 +26,7 @@ export function OurStory() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12" ariaLabel="story" id="story">
             <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-teal-600 to-green-700 bg-clip-text text-transparent">
                     Our Story
                 </h2>
                 <div className="space-y-3 sm:space-y-4">
@@ -54,7 +54,7 @@ export function OurStory() {
                     className="rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm gradient-border-hover"
                     style={{
                         backgroundColor: `${palette.card}F0`,
-                        border: `1px solid ${palette.dark}08`,
+                        border: `2px solid ${palette.dark}08`,
                     }}
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}

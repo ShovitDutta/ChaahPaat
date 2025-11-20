@@ -13,7 +13,7 @@ export function Squircle({
     id?: string;
 }) {
     return (
-        <section className={`relative w-full ${className}`} aria-label={ariaLabel} id={id} style={{ backgroundColor: palette.squircle, borderRadius: "2rem", border: `1px solid ${palette.dark}15` }}>
+        <section className={`relative w-full ${className}`} aria-label={ariaLabel} id={id} style={{ backgroundColor: palette.squircle, borderRadius: "2rem", border: `3px solid ${palette.dark}15` }}>
             <div className={`relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 ${innerClassName}`} style={{ minHeight: 120 }}>
                 {children}
             </div>

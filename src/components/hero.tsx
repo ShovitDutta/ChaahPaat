@@ -34,12 +34,13 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             >
                                 Nature's Finest
                                 <motion.span
-                                    className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-2xl"
-                                    style={{ backgroundColor: palette.accent }}
+                                    className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-2xl bg-gradient-to-r from-green-100 to-lime-100 shadow-inner"
                                     whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
                                     transition={{ duration: 0.5, type: "tween" }}
                                 >
-                                    চাপাত from Assam
+                                    <span className="bg-gradient-to-r from-green-700 to-amber-800 bg-clip-text text-transparent font-bold">
+                                        চাপাত from Assam
+                                    </span>
                                 </motion.span>
                             </motion.h1>
                             <motion.p
@@ -71,7 +72,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover"
                                     href="#brewing"
                                     style={{
-                                        border: `2px solid ${palette.dark}20`,
+                                        border: `3px solid ${palette.dark}20`,
                                         color: palette.dark,
                                     }}
                                     whileInView={{ scale: 1.05, y: -2 }}

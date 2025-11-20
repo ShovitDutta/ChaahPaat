@@ -9,8 +9,7 @@ export function BrewingGuide() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="brewing" id="brewing">
             <motion.h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"
-                style={{ color: palette.dark }}
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -45,7 +44,7 @@ export function BrewingGuide() {
                             className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
                             style={{
                                 backgroundColor: `${palette.card}F0`,
-                                border: `1px solid ${palette.dark}08`,
+                                border: `2px solid ${palette.dark}08`,
                             }}
                         >
                             <motion.div

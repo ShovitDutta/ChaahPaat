@@ -19,7 +19,7 @@ export function Header() {
                         backgroundColor: isScrolled ? `${palette.squircle}F5` : `${palette.squircle}E5`,
                         backdropFilter: "blur(20px)",
                         WebkitBackdropFilter: "blur(20px)",
-                        border: `1px solid ${palette.dark}15`,
+                        border: `3px solid ${palette.dark}15`,
                     }}
                 >
                     <nav className="flex items-center justify-between gap-2 sm:gap-4 px-2 sm:px-4">
@@ -33,7 +33,7 @@ export function Header() {
                                 <Image src="/chaah-paat.png" alt="চাপাত logo" fill className="object-contain" />
                             </motion.div>
                             <div className="flex flex-col leading-tight">
-                                <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight" style={{ color: palette.dark }}>
+                                <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight bg-gradient-to-r from-emerald-700 to-teal-800 bg-clip-text text-transparent">
                                     চাপাত
                                 </span>
                                 <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
@@ -69,7 +69,7 @@ export function Header() {
                             style={{
                                 backgroundColor: palette.accent,
                                 color: palette.dark,
-                                border: `1px solid ${palette.dark}15`,
+                                border: `2px solid ${palette.dark}15`,
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}

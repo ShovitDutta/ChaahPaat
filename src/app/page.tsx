@@ -24,15 +24,15 @@ export default function TeaShopPage() {
             <Hero openCollection={() => {}} />
             <div className="space-y-8 sm:space-y-10 lg:space-y-12">
                 <div className="px-4 py-6 sm:py-8 lg:py-10">
+                    <OurStory />
+                </div>
+                <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
                         <TeaCollection />
                     </Squircle>
                 </div>
                 <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <Story />
-                </div>
-                <div className="px-4 py-6 sm:py-8 lg:py-10">
-                    <OurStory />
                 </div>
                 <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <BrewingGuide />

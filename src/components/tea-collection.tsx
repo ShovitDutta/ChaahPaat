@@ -133,7 +133,7 @@ export default function TeaCollection() {
                 viewport={{ once: false }}
             >
                 <div>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-lime-500 to-teal-600 bg-clip-text text-transparent">
                         Featured Collection
                     </h2>
                     <p className="mt-1 sm:mt-2 text-sm sm:text-base opacity-70" style={{ color: palette.dark }}>
@@ -166,7 +166,7 @@ export default function TeaCollection() {
                                 className="relative rounded-2xl p-4 sm:p-5 lg:p-6 h-full shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm gradient-border-hover"
                                 style={{
                                     backgroundColor: `${palette.card}F0`,
-                                    border: `1px solid ${palette.dark}08`,
+                                    border: `2px solid ${palette.dark}08`,
                                 }}
                             >
                                 <div className="flex flex-col h-full">
@@ -198,7 +198,7 @@ export default function TeaCollection() {
                                         style={{
                                             backgroundColor: hoveredTea === tea.name ? palette.accent : palette.bg,
                                             color: palette.dark,
-                                            border: `1px solid ${palette.dark}10`,
+                                            border: `2px solid ${palette.dark}10`,
                                         }}
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
