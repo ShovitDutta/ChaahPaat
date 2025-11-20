@@ -259,10 +259,10 @@ export default function TeaShopPage() {
                             </motion.div>
 
                             <div className="hidden md:flex gap-6 lg:gap-8 text-sm font-medium">
-                                {["Collection", "Story", "Brewing"].map((item, i) => (
+                                {["About", "Collection", "Story", "Brewing"].map((item, i) => (
                                     <motion.a
                                         key={item}
-                                        href={`#${item.toLowerCase()}`}
+                                        href={item === "About" ? "#about" : `#${item.toLowerCase()}`}
                                         className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-lg gradient-border-hover"
                                         style={{ color: palette.dark }}
                                         whileHover={{ y: -2 }}
@@ -488,6 +488,23 @@ export default function TeaShopPage() {
                         </AnimatePresence>
                     </motion.div>
                 </Squircle>
+                <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="about" id="about">
+                    <motion.div
+                        className="text-center space-y-4 sm:space-y-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                            About Us
+                        </h2>
+                        <div className="max-w-4xl mx-auto">
+                            <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
+                                At Chaah Paat, we bring you the finest teas from the heart of Assam—handpicked from legendary tea regions like Mangaldoi, Dibrugarh, Tinsukia, Jorhat, Golaghat, and beyond. Each leaf is carefully selected for its bold aroma, rich flavour, and authentic heritage. Our mission is simple: to deliver premium Assam tea that carries the soul of the land, the passion of our growers, and the purity of every sunrise over the tea gardens. Experience tea the way Assam intended—fresh, honest, and unforgettable.
+                            </p>
+                        </div>
+                    </motion.div>
+                </Squircle>
                 <Squircle className="mx-auto max-w-7xl" innerClassName="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12" ariaLabel="story" id="story">
                     <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
@@ -495,14 +512,19 @@ export default function TeaShopPage() {
                         </h2>
                         <div className="space-y-3 sm:space-y-4">
                             <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
-                                We source directly from fourth-generation tea growers in Assam who practice sustainable farming and focus on small-batch processing that celebrates each harvest.
+                                Our journey began not in an office, but in the early morning mist of Assam's tea gardens, where generations of growers have poured their hearts into every leaf. We grew up watching the rhythm of the pluckers' hands, the warmth of the first brew at dawn, and the pride that comes from creating tea that travels the world.
                             </p>
                             <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
-                                Every tea is carefully cupped and documented with detailed tasting notes and brewing suggestions, bringing you the authentic flavors of Assam's terroir.
+                                What started as a small dream soon became a mission—to bring authentic Assam tea to every cup, without losing the traditions that shaped it. Today, we travel across Assam's finest estates, from Mangaldoi's aromatic orthodox fields to Dibrugarh's bold CTC gardens, choosing only the leaves that tell a story.
+                            </p>
+                            <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
+                                This is not just our business—
+                                this is our heritage, our passion, and our promise:
+                                to deliver tea that feels like home, tastes like tradition, and inspires the modern tea lover.
                             </p>
                         </div>
                         <motion.div className="pt-2 sm:pt-4" whileHover={{ x: 5 }}>
-                            <a href="#story" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: palette.dark }}>
+                            <a href="#about" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: palette.dark }}>
                                 Learn More <span className="text-lg">→</span>
                             </a>
                         </motion.div>
@@ -518,10 +540,10 @@ export default function TeaShopPage() {
                             transition={{ type: "spring", stiffness: 300 }}
                         >
                             <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider mb-4 sm:mb-6" style={{ color: palette.dark }}>
-                                Why চাপাত
+                                Why Chaah Paat
                             </h3>
                             <div className="space-y-3 sm:space-y-4">
-                                {["Transparent, ethical sourcing from Assam", "Seasonal small-batch selections", "Expert brewing guides for every level", "Carbon-neutral shipping worldwide"].map(
+                                {["Finest Leaves From Assam's Iconic Regions", "Handpicked for Quality, Not Quantity", "Authentic & Farm-Fresh", "Tradition Meets Modern Craft", "Ethically Sourced, Expertly Blended", "Tea That Tells a Story"].map(
                                     (item, i) => (
                                         <motion.div
                                             key={item}
@@ -620,7 +642,37 @@ export default function TeaShopPage() {
                             © {new Date().getFullYear()} চাপাত — Mindful Tea Moments
                         </motion.div>
                         <div className="flex gap-2 sm:gap-3 lg:gap-4">
-                            {["Contact", "Instagram", "Newsletter"].map((link) => (
+                            <motion.a
+                                href="tel:+916900234165"
+                                className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
+                                style={{
+                                    border: `1px solid ${palette.dark}20`,
+                                    color: palette.dark,
+                                }}
+                                whileHover={{
+                                    scale: 1.05,
+                                    backgroundColor: `${palette.accent}20`,
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Contact: +91 6900234165
+                            </motion.a>
+                            <motion.a
+                                href="tel:+919883617119"
+                                className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
+                                style={{
+                                    border: `1px solid ${palette.dark}20`,
+                                    color: palette.dark,
+                                }}
+                                whileHover={{
+                                    scale: 1.05,
+                                    backgroundColor: `${palette.accent}20`,
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                +91 9883617119
+                            </motion.a>
+                            {["Instagram", "Newsletter"].map((link) => (
                                 <motion.button
                                     key={link}
                                     className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"

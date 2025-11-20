@@ -8,8 +8,8 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 export const metadata: Metadata = {
-  title: "চাপাত | Nature's Finest Leaf from Assam",
-  description: "Nature's Finest Leaf from Assam",
+  title: "Chaah Paat | Premium Assam Tea from the Heart of Assam",
+  description: "Premium Assam Tea from the Heart of Assam",
 };
 
 export default function RootLayout({
