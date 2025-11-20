@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
+import useCartStore from '@/store/cartStore';
 
 type Tea = { id: string; name: string; note: string; tag: string; emoji: string; description: string; origin: string; elevation: string; harvest: string };
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
@@ -10,6 +11,8 @@ const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 
 function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; onClose: () => void }) {
+    const addToCart = useCartStore(state => state.addToCart);
+
     if (!tea) return null;
     return (
         <AnimatePresence>
@@ -72,6 +75,18 @@ function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; 
                                 style={{ backgroundColor: palette.accent, color: palette.dark }}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
+                                onClick={(e) => {
+                                    // Get the button position for the animation
+                                    const rect = (e.target as HTMLElement).getBoundingClientRect();
+                                    const position = {
+                                        x: rect.left + rect.width / 2,
+                                        y: rect.top + rect.height / 2
+                                    };
+
+                                    addToCart(tea, position);
+                                    // Close the modal after adding to cart
+                                    onClose();
+                                }}
                             >
                                 Add to Cart
                             </motion.button>

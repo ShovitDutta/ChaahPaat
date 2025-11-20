@@ -8,6 +8,8 @@ import { useScroll, useSpring } from "framer-motion";
 import { Story, OurStory } from "@/components/story";
 import TeaCollection from "@/components/tea-collection";
 import { BrewingGuide } from "@/components/brewing-guide";
+import { StickyCartBar } from "@/components/sticky-cart-bar";
+import { AddToCartAnimation } from "@/components/add-to-cart-animation";
 
 export default function TeaShopPage() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -41,6 +43,8 @@ export default function TeaShopPage() {
             <div className="px-4 py-6 sm:py-8 lg:py-10">
                 <Footer />
             </div>
+            <StickyCartBar />
+            <AddToCartAnimation />
         </main>
     );
 }
