@@ -1,5 +1,5 @@
 {
-  "name": "chapatt",
+  "name": "chaah-paat",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -29,10 +29,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ShovitDutta/chapatt.git"
+    "url": "https://github.com/ShovitDutta/chaah-paat.git"
   },
-  "homepage": "https://chapatt.vercel.app/",
+  "homepage": "https://chaah-paat.vercel.app/",
   "bugs": {
-    "url": "https://github.com/ShovitDutta/chapatt/issues"
+    "url": "https://github.com/ShovitDutta/chaah-paat/issues"
   }
 }

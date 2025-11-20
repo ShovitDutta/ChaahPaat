@@ -1,9 +1,9 @@
-# Chapatt - Nature's Finest Leaf from Assam
+# Chaah Paat - Premium Assam Tea from the Heart of Assam
 
-চাপাত brings you small-batch artisan teas from the misty hills of Assam, paired with mindful brewing rituals for your daily moments of tranquility.
+Chaah Paat brings you small-batch artisan teas from the misty hills of Assam, paired with mindful brewing rituals for your daily moments of tranquility.
 
 ## Live Demo
-Check out the live deployment: [https://chapatt.vercel.app/](https://chapatt.vercel.app/)
+Check out the live deployment: [https://chaah-paat.vercel.app/](https://chaah-paat.vercel.app/)
 
 ## Features
 - Carefully curated collection of premium teas from Assam

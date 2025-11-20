@@ -246,11 +246,11 @@ export default function TeaShopPage() {
                                     whileHover={{ rotate: [0, -5, 5, 0] }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Image src="/চাপাত.png" alt="চাপাত logo" fill className="object-contain" />
+                                    <Image src="/chaah-paat.png" alt="Chaah Paat logo" fill className="object-contain" />
                                 </motion.div>
                                 <div className="flex flex-col leading-tight">
                                     <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight" style={{ color: palette.dark }}>
-                                        চাপাত
+                                        Chaah Paat
                                     </span>
                                     <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
                                         Nature's Finest Leaf
@@ -320,12 +320,12 @@ export default function TeaShopPage() {
                                     whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
                                     transition={{ duration: 0.5, type: "tween" }}
                                 >
-                                    cup of চাপাত
+                                    cup of Chaah Paat
                                 </motion.span>
                             </motion.h1>
 
                             <motion.p className="text-sm sm:text-base opacity-80 leading-relaxed max-w-lg" style={{ color: palette.dark }} variants={fadeInUp}>
-                                চাপাত brings you small-batch artisan teas from the misty hills of Assam, paired with mindful brewing rituals for your daily moments of tranquility.
+                                Chaah Paat brings you small-batch artisan teas from the misty hills of Assam, paired with mindful brewing rituals for your daily moments of tranquility.
                             </motion.p>
 
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp}>
@@ -392,7 +392,7 @@ export default function TeaShopPage() {
                                     }
                                 }}
                             >
-                                <Image src="/চাপাত.png" alt="চাপাত tea" fill className="object-contain p-1" />
+                                <Image src="/chaah-paat.png" alt="Chaah Paat tea" fill className="object-contain p-1" />
                             </motion.a>
                         </motion.div>
                     </motion.div>
@@ -639,7 +639,7 @@ export default function TeaShopPage() {
                 <Squircle className="mx-auto max-w-7xl" innerClassName="py-4 sm:py-6" ariaLabel="footer">
                     <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <motion.div className="text-xs sm:text-sm opacity-60" style={{ color: palette.dark }} whileHover={{ opacity: 1 }}>
-                            © {new Date().getFullYear()} চাপাত — Mindful Tea Moments
+                            © {new Date().getFullYear()} Chaah Paat — Mindful Tea Moments
                         </motion.div>
                         <div className="flex gap-2 sm:gap-3 lg:gap-4">
                             <motion.a
