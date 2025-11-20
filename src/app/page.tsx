@@ -27,12 +27,14 @@ export default function TeaShopPage() {
         <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
             <Header />
             <Hero openCollection={() => {}} />
-            <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
-                <TeaCollection />
-            </Squircle>
-            <Story />
-            <OurStory />
-            <BrewingGuide />
+            <div className="space-y-12 sm:space-y-16 lg:space-y-20">
+                <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
+                    <TeaCollection />
+                </Squircle>
+                <Story />
+                <OurStory />
+                <BrewingGuide />
+            </div>
             <Footer />
         </main>
     );
