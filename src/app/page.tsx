@@ -246,11 +246,11 @@ export default function TeaShopPage() {
                                     whileHover={{ rotate: [0, -5, 5, 0] }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Image src="/chaah-paat.png" alt="Chaah Paat logo" fill className="object-contain" />
+                                    <Image src="/chaah-paat.png" alt="চাপাত logo" fill className="object-contain" />
                                 </motion.div>
                                 <div className="flex flex-col leading-tight">
                                     <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight" style={{ color: palette.dark }}>
-                                        Chaah Paat (চাপাত)
+                                        চাপাত
                                     </span>
                                     <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
                                         Nature's Finest Leaf
@@ -370,13 +370,26 @@ export default function TeaShopPage() {
                                 className="absolute h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer"
                                 style={{
                                     backgroundColor: palette.squircle,
-                                    border: `2px solid ${palette.accent}`,
                                 }}
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+                                initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
+                                animate={{
+                                    scale: 1,
+                                    opacity: 1,
+                                    rotate: [0, -3, 3, 0]
+                                }}
+                                transition={{
+                                    delay: 0.2,
+                                    type: "spring",
+                                    stiffness: 100,
+                                    rotate: {
+                                        duration: 20,
+                                        repeat: Infinity,
+                                        repeatType: "reverse"
+                                    }
+                                }}
                                 whileHover={{
                                     scale: 1.05,
+                                    rotate: 0,
                                     transition: {
                                         type: "spring",
                                         stiffness: 400,
@@ -392,7 +405,7 @@ export default function TeaShopPage() {
                                     }
                                 }}
                             >
-                                <Image src="/chaah-paat.png" alt="Chaah Paat tea" fill className="object-contain p-1" />
+                                <Image src="/chaah-paat.png" alt="চাপাত tea" fill className="object-contain p-1" />
                             </motion.a>
                         </motion.div>
                     </motion.div>
