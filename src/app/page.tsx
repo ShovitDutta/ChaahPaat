@@ -27,23 +27,23 @@ export default function TeaShopPage() {
         <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
             <Header />
             <Hero openCollection={() => {}} />
-            <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-                <div className="px-4 py-8 sm:py-10 lg:py-12">
+            <div className="space-y-8 sm:space-y-10 lg:space-y-12">
+                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
                     <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
                         <TeaCollection />
                     </Squircle>
                 </div>
-                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
                     <Story />
                 </div>
-                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
                     <OurStory />
                 </div>
-                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
                     <BrewingGuide />
                 </div>
             </div>
-            <div className="px-4 py-8 sm:py-10 lg:py-12">
+            <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
                 <Footer />
             </div>
         </main>

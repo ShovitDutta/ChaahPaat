@@ -24,7 +24,7 @@ export function Story() {
         className="text-center space-y-4 sm:space-y-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
       >
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
           About Us
@@ -42,7 +42,7 @@ export function Story() {
 export function OurStory() {
   return (
     <Squircle className="mx-auto max-w-7xl" innerClassName="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12" ariaLabel="story" id="story">
-      <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+      <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
           Our Story
         </h2>
@@ -65,7 +65,7 @@ export function OurStory() {
           </a>
         </motion.div>
       </motion.div>
-      <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+      <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
         <motion.div
           className="rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm gradient-border-hover"
           style={{

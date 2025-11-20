@@ -173,7 +173,7 @@ export default function TeaCollection() {
         className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
       >
         <div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
@@ -183,11 +183,11 @@ export default function TeaCollection() {
             Seasonal small-batch teas from Assam's finest gardens
           </p>
         </div>
-        <motion.span className="text-[10px] sm:text-xs uppercase tracking-wider opacity-50" initial={{ opacity: 0 }} whileInView={{ opacity: 0.5 }} viewport={{ once: true }}>
+        <motion.span className="text-[10px] sm:text-xs uppercase tracking-wider opacity-50" initial={{ opacity: 0 }} whileInView={{ opacity: 0.5 }} viewport={{ once: false }}>
             Single Origin
         </motion.span>
       </motion.div>
-      <motion.div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
+      <motion.div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
         <AnimatePresence>
           {teas.map((tea) => (
             <motion.div

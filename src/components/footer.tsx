@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 export function Footer() {
     return (
-        <Squircle className="mx-auto max-w-7xl" innerClassName="py-4 sm:py-6" ariaLabel="footer">
-            <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+        <Squircle className="mx-auto max-w-7xl shadow-[0_4px_12px_rgba(102,204,102,0.15)]" innerClassName="py-4 sm:py-6" ariaLabel="footer">
+            <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }}>
                 <motion.div className="text-xs sm:text-sm opacity-60" style={{ color: palette.dark }} whileHover={{ opacity: 1 }}>
                     © {new Date().getFullYear()} চাপাত — Mindful Tea Moments
                 </motion.div>
