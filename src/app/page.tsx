@@ -1,28 +1,23 @@
 "use client";
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { Hero } from "@/components/hero";
 import { useEffect, useState } from "react";
-import TeaCollection from './tea-collection';
-import { Header } from '../components/header';
-import { Hero } from '../components/hero';
-import { Squircle } from '../components/squircle';
-import { Story, OurStory } from '../components/story';
-import { BrewingGuide } from '../components/brewing-guide';
-import { Footer } from '../components/footer';
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Squircle } from "@/components/squircle";
+import { useScroll, useSpring } from "framer-motion";
+import { Story, OurStory } from "@/components/story";
+import TeaCollection from "@/components/tea-collection";
+import { BrewingGuide } from "@/components/brewing-guide";
 
 export default function TeaShopPage() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
+    const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
     return (
         <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
             <Header />

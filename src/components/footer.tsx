@@ -1,6 +1,7 @@
 import { Squircle } from "./squircle";
 import { motion } from "framer-motion";
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
+
 export function Footer() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="py-4 sm:py-6" ariaLabel="footer">

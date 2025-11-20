@@ -1,40 +1,20 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useScroll, useSpring } from "framer-motion";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-};
-
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
-
-// Define the palette to maintain consistency
-const palette = {
-  bg: "#FFFFFF",
-  card: "#E8F5E0",
-  squircle: "#D9F0CC",
-  accent: "#A8D88A",
-  dark: "#1D1A05",
-  shadow: "#142506",
-};
+const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
+const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
 
 export function Hero({ openCollection }: { openCollection: () => void }) {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-  });
-
-  return (
-    <>
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
-
-      <div className="pt-20 sm:pt-24 lg:pt-28 space-y-12 sm:space-y-16 lg:space-y-20 px-4 py-8 sm:py-10 lg:py-12">
-        <div className="mx-auto max-w-7xl py-4 sm:py-6 lg:py-8">
-          <motion.div className="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    return (
+        <>
+            <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
+            <div className="pt-20 sm:pt-24 lg:pt-28 space-y-12 sm:space-y-16 lg:space-y-20 px-4 py-8 sm:py-10 lg:py-12">
+                <div className="mx-auto max-w-7xl py-4 sm:py-6 lg:py-8">
+                    <motion.div className="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
                         <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.p
                                 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold opacity-60"
@@ -45,8 +25,13 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             >
                                 Curated Leaf • Mindful Brewing
                             </motion.p>
-
-                            <motion.h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight" style={{ color: palette.dark }} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                            <motion.h1
+                                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight"
+                                style={{ color: palette.dark }}
+                                initial="initial"
+                                whileInView="animate"
+                                viewport={{ once: false }}
+                            >
                                 Nature's Finest
                                 <motion.span
                                     className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-2xl"
@@ -57,11 +42,16 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     চাপাত from Assam
                                 </motion.span>
                             </motion.h1>
-
-                            <motion.p className="text-sm sm:text-base opacity-80 leading-relaxed max-w-lg" style={{ color: palette.dark }} variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                            <motion.p
+                                className="text-sm sm:text-base opacity-80 leading-relaxed max-w-lg"
+                                style={{ color: palette.dark }}
+                                variants={fadeInUp}
+                                initial="initial"
+                                whileInView="animate"
+                                viewport={{ once: false }}
+                            >
                                 Chaah Paat brings you Nature's Finest Leaf from Assam, paired with mindful brewing rituals for your daily moments of tranquility.
                             </motion.p>
-
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                                 <motion.a
                                     className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover"
@@ -93,7 +83,6 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                 </motion.a>
                             </motion.div>
                         </motion.div>
-
                         <motion.div className="relative flex justify-center md:justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.div
                                 className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80"
