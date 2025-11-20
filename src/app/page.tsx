@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 const palette = {
-    bg: "#D9E5D6",
+    bg: "#FFFFFF",
     card: "#E8F5E0",
     squircle: "#D9F0CC",
     accent: "#A8D88A",
