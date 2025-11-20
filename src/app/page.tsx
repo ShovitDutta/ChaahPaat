@@ -28,22 +28,22 @@ export default function TeaShopPage() {
             <Header />
             <Hero openCollection={() => {}} />
             <div className="space-y-8 sm:space-y-10 lg:space-y-12">
-                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
+                <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
                         <TeaCollection />
                     </Squircle>
                 </div>
-                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
+                <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <Story />
                 </div>
-                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
+                <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <OurStory />
                 </div>
-                <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
+                <div className="px-4 py-6 sm:py-8 lg:py-10">
                     <BrewingGuide />
                 </div>
             </div>
-            <div className="px-4 py-6 sm:py-8 lg:py-10 shadow-[0_4px_12px_rgba(102,204,102,0.15)]">
+            <div className="px-4 py-6 sm:py-8 lg:py-10">
                 <Footer />
             </div>
         </main>
