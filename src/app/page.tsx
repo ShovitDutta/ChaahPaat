@@ -250,7 +250,7 @@ export default function TeaShopPage() {
                                 </motion.div>
                                 <div className="flex flex-col leading-tight">
                                     <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight" style={{ color: palette.dark }}>
-                                        Chaah Paat
+                                        Chaah Paat (চাপাত)
                                     </span>
                                     <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
                                         Nature's Finest Leaf
@@ -320,7 +320,7 @@ export default function TeaShopPage() {
                                     whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
                                     transition={{ duration: 0.5, type: "tween" }}
                                 >
-                                    cup of Chaah Paat
+                                    cup of Chaah Paat (চাপাত)
                                 </motion.span>
                             </motion.h1>
 
@@ -639,7 +639,7 @@ export default function TeaShopPage() {
                 <Squircle className="mx-auto max-w-7xl" innerClassName="py-4 sm:py-6" ariaLabel="footer">
                     <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <motion.div className="text-xs sm:text-sm opacity-60" style={{ color: palette.dark }} whileHover={{ opacity: 1 }}>
-                            © {new Date().getFullYear()} Chaah Paat — Mindful Tea Moments
+                            © {new Date().getFullYear()} Chaah Paat (চাপাত) — Mindful Tea Moments
                         </motion.div>
                         <div className="flex gap-2 sm:gap-3 lg:gap-4">
                             <motion.a
