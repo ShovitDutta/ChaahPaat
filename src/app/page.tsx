@@ -28,14 +28,24 @@ export default function TeaShopPage() {
             <Header />
             <Hero openCollection={() => {}} />
             <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-                <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
-                    <TeaCollection />
-                </Squircle>
-                <Story />
-                <OurStory />
-                <BrewingGuide />
+                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                    <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
+                        <TeaCollection />
+                    </Squircle>
+                </div>
+                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                    <Story />
+                </div>
+                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                    <OurStory />
+                </div>
+                <div className="px-4 py-8 sm:py-10 lg:py-12">
+                    <BrewingGuide />
+                </div>
             </div>
-            <Footer />
+            <div className="px-4 py-8 sm:py-10 lg:py-12">
+                <Footer />
+            </div>
         </main>
     );
 }
