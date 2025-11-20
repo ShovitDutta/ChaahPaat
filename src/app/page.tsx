@@ -313,19 +313,19 @@ export default function TeaShopPage() {
                             </motion.p>
 
                             <motion.h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight" style={{ color: palette.dark }}>
-                                Find calm in every
+                                Nature's Finest
                                 <motion.span
                                     className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-xl sm:rounded-2xl"
                                     style={{ backgroundColor: palette.accent }}
                                     whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
                                     transition={{ duration: 0.5, type: "tween" }}
                                 >
-                                    cup of Chaah Paat (চাপাত)
+                                    চাপাত from Assam
                                 </motion.span>
                             </motion.h1>
 
                             <motion.p className="text-sm sm:text-base opacity-80 leading-relaxed max-w-lg" style={{ color: palette.dark }} variants={fadeInUp}>
-                                Chaah Paat brings you small-batch artisan teas from the misty hills of Assam, paired with mindful brewing rituals for your daily moments of tranquility.
+                                Chaah Paat brings you Nature's Finest Leaf from Assam, paired with mindful brewing rituals for your daily moments of tranquility.
                             </motion.p>
 
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp}>
