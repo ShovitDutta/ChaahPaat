@@ -427,23 +427,6 @@ export default function TeaShopPage() {
                             >
                                 +91 9883617119
                             </motion.a>
-                            {["Instagram", "Newsletter"].map((link) => (
-                                <motion.button
-                                    key={link}
-                                    className="rounded-full px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover"
-                                    style={{
-                                        border: `1px solid ${palette.dark}20`,
-                                        color: palette.dark,
-                                    }}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        backgroundColor: `${palette.accent}20`,
-                                    }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    {link}
-                                </motion.button>
-                            ))}
                         </div>
                     </motion.div>
                 </Squircle>
