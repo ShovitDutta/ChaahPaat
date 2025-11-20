@@ -37,168 +37,7 @@ function Squircle({ children, className = "", innerClassName = "", ariaLabel, id
     );
 }
 
-const teas = [
-    {
-        name: "Jasmine Green Harmony",
-        note: "Floral, light-bodied — perfect for evening unwinding.",
-        tag: "Green",
-        emoji: "🌿",
-        description:
-            "A delicate blend of premium green tea leaves infused with fresh jasmine blossoms. This tea undergoes a traditional scenting process where tea leaves absorb the natural fragrance of jasmine flowers over several nights.",
-        origin: "Assam, India",
-        elevation: "500-800m",
-        harvest: "Spring 2024",
-    },
-    {
-        name: "Smoky Mountain Oolong",
-        note: "Complex roasted aroma with a sweet lingering finish.",
-        tag: "Oolong",
-        emoji: "🏔️",
-        description: "Partially oxidized and carefully roasted to develop its distinctive smoky character. Notes of dried fruit and honey emerge as the leaves unfold through multiple infusions.",
-        origin: "Assam Hills, India",
-        elevation: "1000-1200m",
-        harvest: "Summer 2024",
-    },
-    {
-        name: "Lemongrass Chamomile",
-        note: "Calming herbal blend with bright citrus notes.",
-        tag: "Herbal",
-        emoji: "🌼",
-        description: "A caffeine-free infusion combining organic chamomile flowers with fresh lemongrass. Perfect for evening relaxation with natural calming properties.",
-        origin: "Multi-region blend",
-        elevation: "Various",
-        harvest: "Year-round",
-    },
-    {
-        name: "Lotus White Pearl",
-        note: "Delicate, sweet, floral notes with a silky finish.",
-        tag: "White",
-        emoji: "🪷",
-        description: "Rare silver needle white tea with minimal processing to preserve its natural sweetness. Hand-picked buds create a pale golden liquor with subtle complexity.",
-        origin: "Assam, India",
-        elevation: "800-1000m",
-        harvest: "Early Spring 2024",
-    },
-    {
-        name: "Citrus Mint Breeze",
-        note: "Refreshing herbal blend with mint and citrus.",
-        tag: "Herbal",
-        emoji: "🍃",
-        description: "Invigorating blend of spearmint, peppermint, and citrus peels. Naturally caffeine-free with cooling properties perfect for hot summer days.",
-        origin: "Multi-region blend",
-        elevation: "Various",
-        harvest: "Summer 2024",
-    },
-    {
-        name: "Autumn Keemun",
-        note: "Smooth black tea with subtle stone fruit and cocoa.",
-        tag: "Black",
-        emoji: "🍂",
-        description: "Premium black tea with wine-like characteristics and natural sweetness. Known for its smooth texture without astringency, with hints of cocoa and fruit.",
-        origin: "Assam, India",
-        elevation: "600-900m",
-        harvest: "Autumn 2024",
-    },
-    {
-        name: "Himalayan Breakfast",
-        note: "Bold and malty with a hint of caramel.",
-        tag: "Black",
-        emoji: "⛰️",
-        description: "Robust breakfast blend with full-bodied character. High-grown tea leaves provide natural sweetness and strength that pairs perfectly with milk.",
-        origin: "Himalayan Foothills",
-        elevation: "1500-2000m",
-        harvest: "Summer 2024",
-    },
-    {
-        name: "Tieguanyin",
-        note: "Floral oolong with a honeyed aftertaste.",
-        tag: "Oolong",
-        emoji: "🌸",
-        description: "Traditional iron goddess oolong with orchid-like aroma. Multiple roasting creates layers of flavor that evolve through successive infusions.",
-        origin: "Assam, India",
-        elevation: "800-1200m",
-        harvest: "Spring 2024",
-    },
-];
-
-function TeaModal({ tea, isOpen, onClose }: { tea: (typeof teas)[0] | null; isOpen: boolean; onClose: () => void }) {
-    if (!tea) return null;
-
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <>
-                    <motion.div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
-                    <motion.div className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        <motion.div
-                            className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl pointer-events-auto"
-                            initial={{ scale: 0.9, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <div className="flex items-start justify-between mb-4">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-3xl">{tea.emoji}</span>
-                                    <motion.span
-                                        className="inline-block rounded-full px-3 py-1 text-xs font-bold"
-                                        style={{
-                                            backgroundColor: palette.accent,
-                                            color: palette.dark,
-                                        }}
-                                    >
-                                        {tea.tag}
-                                    </motion.span>
-                                </div>
-                                <button type="button" onClick={onClose} className="text-2xl hover:scale-110 transition-transform" style={{ color: palette.dark }}>
-                                    ×
-                                </button>
-                            </div>
-
-                            <h3 className="text-2xl font-bold mb-4" style={{ color: palette.dark }}>
-                                {tea.name}
-                            </h3>
-
-                            <p className="text-base mb-6 leading-relaxed" style={{ color: `${palette.dark}CC` }}>
-                                {tea.description}
-                            </p>
-
-                            <div className="space-y-3 mb-6">
-                                <div className="flex justify-between text-sm">
-                                    <span className="font-semibold" style={{ color: palette.dark }}>
-                                        Origin:
-                                    </span>
-                                    <span style={{ color: `${palette.dark}CC` }}>{tea.origin}</span>
-                                </div>
-                                <div className="flex justify-between text-sm">
-                                    <span className="font-semibold" style={{ color: palette.dark }}>
-                                        Elevation:
-                                    </span>
-                                    <span style={{ color: `${palette.dark}CC` }}>{tea.elevation}</span>
-                                </div>
-                                <div className="flex justify-between text-sm">
-                                    <span className="font-semibold" style={{ color: palette.dark }}>
-                                        Harvest:
-                                    </span>
-                                    <span style={{ color: `${palette.dark}CC` }}>{tea.harvest}</span>
-                                </div>
-                            </div>
-
-                            <motion.button
-                                className="w-full rounded-full py-3 font-semibold"
-                                style={{ backgroundColor: palette.accent, color: palette.dark }}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                            >
-                                Add to Cart
-                            </motion.button>
-                        </motion.div>
-                    </motion.div>
-                </>
-            )}
-        </AnimatePresence>
-    );
-}
+import TeaCollection from './tea-collection';
 
 export default function TeaShopPage() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -208,20 +47,11 @@ export default function TeaShopPage() {
         damping: 30,
         restDelta: 0.001,
     });
-    const [hoveredTea, setHoveredTea] = useState<string | null>(null);
-    const [selectedTea, setSelectedTea] = useState<(typeof teas)[0] | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
-    const openTeaModal = (tea: (typeof teas)[0]) => {
-        setSelectedTea(tea);
-        setIsModalOpen(true);
-    };
 
     return (
         <main style={{ backgroundColor: palette.bg, color: palette.dark }} className="min-h-screen antialiased overflow-x-hidden">
@@ -411,95 +241,7 @@ export default function TeaShopPage() {
                     </motion.div>
                 </Squircle>
                 <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="collection" id="collection">
-                    <motion.div
-                        className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-0"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div>
-                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight" style={{ color: palette.dark }}>
-                                Featured Collection
-                            </h2>
-                            <p className="mt-1 sm:mt-2 text-sm sm:text-base opacity-70" style={{ color: palette.dark }}>
-                                Seasonal small-batch teas from Assam's finest gardens
-                            </p>
-                        </div>
-                        <motion.span className="text-[10px] sm:text-xs uppercase tracking-wider opacity-50" initial={{ opacity: 0 }} whileInView={{ opacity: 0.5 }} viewport={{ once: true }}>
-                            Single Origin
-                        </motion.span>
-                    </motion.div>
-                    <motion.div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
-                        <AnimatePresence>
-                            {teas.map((tea, _index) => (
-                                <motion.div
-                                    key={tea.name}
-                                    variants={fadeInUp}
-                                    className="group relative cursor-pointer"
-                                    onHoverStart={() => setHoveredTea(tea.name)}
-                                    onHoverEnd={() => setHoveredTea(null)}
-                                    onClick={() => openTeaModal(tea)}
-                                    whileHover={{ y: -8 }}
-                                    transition={{ type: "spring", stiffness: 300 }}
-                                >
-                                    <motion.div
-                                        className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-linear-to-br from-emerald-400/20 to-lime-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                        initial={false}
-                                        animate={hoveredTea === tea.name ? { scale: 1.1 } : { scale: 1 }}
-                                    />
-                                    <div
-                                        className="relative rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 h-full shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm gradient-border-hover"
-                                        style={{
-                                            backgroundColor: `${palette.card}F0`,
-                                            border: `1px solid ${palette.dark}08`,
-                                        }}
-                                    >
-                                        <div className="flex flex-col h-full">
-                                            <div className="flex items-start justify-between gap-2 sm:gap-4">
-                                                <motion.span
-                                                    className="inline-block rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-bold tracking-wide"
-                                                    style={{
-                                                        backgroundColor: palette.accent,
-                                                        color: palette.dark,
-                                                    }}
-                                                    whileHover={{ scale: 1.1 }}
-                                                >
-                                                    {tea.tag}
-                                                </motion.span>
-                                                <motion.div className="text-xl sm:text-2xl" animate={hoveredTea === tea.name ? { rotate: [0, -10, 10, 0] } : {}} transition={{ duration: 0.5 }}>
-                                                    {tea.emoji}
-                                                </motion.div>
-                                            </div>
-                                            <div className="flex-1 mt-3 sm:mt-4">
-                                                <h3 className="text-sm sm:text-base lg:text-lg font-bold leading-tight tracking-tight" style={{ color: palette.dark }}>
-                                                    {tea.name}
-                                                </h3>
-                                                <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed opacity-80 line-clamp-2 sm:line-clamp-3" style={{ color: palette.dark }}>
-                                                    {tea.note}
-                                                </p>
-                                            </div>
-                                            <motion.button
-                                                className="w-full mt-3 sm:mt-4 lg:mt-6 rounded-full py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all gradient-border-hover"
-                                                style={{
-                                                    backgroundColor: hoveredTea === tea.name ? palette.accent : palette.bg,
-                                                    color: palette.dark,
-                                                    border: `1px solid ${palette.dark}10`,
-                                                }}
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    openTeaModal(tea);
-                                                }}
-                                            >
-                                                View Details
-                                            </motion.button>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </motion.div>
+                    <TeaCollection />
                 </Squircle>
                 <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="about" id="about">
                     <motion.div
@@ -652,7 +394,7 @@ export default function TeaShopPage() {
                 <Squircle className="mx-auto max-w-7xl" innerClassName="py-4 sm:py-6" ariaLabel="footer">
                     <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <motion.div className="text-xs sm:text-sm opacity-60" style={{ color: palette.dark }} whileHover={{ opacity: 1 }}>
-                            © {new Date().getFullYear()} Chaah Paat (চাপাত) — Mindful Tea Moments
+                            © {new Date().getFullYear()} চাপাত — Mindful Tea Moments
                         </motion.div>
                         <div className="flex gap-2 sm:gap-3 lg:gap-4">
                             <motion.a
@@ -706,7 +448,6 @@ export default function TeaShopPage() {
                     </motion.div>
                 </Squircle>
             </div>
-            <TeaModal tea={selectedTea} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }
