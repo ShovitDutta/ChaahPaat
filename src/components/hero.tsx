@@ -13,8 +13,8 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
             <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
             <div className="pt-16 sm:pt-20 lg:pt-24 space-y-6 sm:space-y-8 lg:space-y-10 px-4 py-6 sm:py-7 lg:py-8">
                 <div className="mx-auto max-w-7xl py-2 sm:py-3 lg:py-4">
-                    <motion.div className="grid grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
-                        <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                    <motion.div className="grid grid-cols-10 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
+                        <motion.div className="space-y-4 sm:space-y-6 col-span-7" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.p
                                 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold opacity-60"
                                 initial={{ opacity: 0, letterSpacing: "0.1em" }}
@@ -93,7 +93,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                 </motion.a>
                             </motion.div>
                         </motion.div>
-                        <motion.div className="relative flex justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                        <motion.div className="relative flex justify-end col-span-3" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.div
                                 className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
                                 initial={{ rotate: 0 }}
