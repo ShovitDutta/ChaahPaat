@@ -5,7 +5,7 @@ const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
 export function BrewingGuide() {
     return (
-        <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="brewing" id="brewing">
+        <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-4 sm:space-y-5" ariaLabel="brewing" id="brewing">
             <motion.h2
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export function BrewingGuide() {
             >
                 Brewing Guide
             </motion.h2>
-            <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
+            <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
                 {[
                     {
                         title: "Water",
@@ -39,10 +39,9 @@ export function BrewingGuide() {
                 ].map((brew, i) => (
                     <motion.div key={brew.title} variants={fadeInUp} className="group col-span-1" whileHover={{ y: -5 }}>
                         <motion.div
-                            className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
+                            className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm"
                             style={{
                                 backgroundColor: `${palette.card}F0`,
-                                border: `2px solid ${palette.dark}08`,
                             }}
                         >
                             <motion.div

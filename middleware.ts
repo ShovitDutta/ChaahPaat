@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import { authConfig } from "@/auth";
 const { auth } = NextAuth(authConfig);
-const publicRoutes = ["/login", "/api/auth", "/api/auth/callback", "/api/teas"];
+const publicRoutes = ["/", "/login", "/api/auth", "/api/auth/callback", "/api/teas"];
 export default auth((req) => {
     const isPublicRoute = publicRoutes.some((route) => req.nextUrl.pathname === route || req.nextUrl.pathname.startsWith(route + "/") || req.nextUrl.pathname.startsWith(route));
     if (req.auth && req.nextUrl.pathname === "/login") {

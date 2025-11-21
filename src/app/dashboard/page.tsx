@@ -8,7 +8,10 @@ import { useSession, signOut } from "next-auth/react";
 export default function DashboardPage() {
     const { data: session, status } = useSession();
     useEffect(() => {
-        if (status === "unauthenticated") redirect("/login");
+        if (status === "unauthenticated") {
+            // Redirect to home page where users can login
+            redirect("/");
+        }
     }, [status]);
     if (status === "loading") {
         return (

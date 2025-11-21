@@ -4,13 +4,37 @@ import { useState } from "react";
 import useCartStore from "@/store/cartStore";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
+import { signIn } from "next-auth/react";
 type Tea = { id: string; name: string; note: string; tag: string; emoji: string; description: string; origin: string; elevation: string; harvest: string };
+type TeaCollectionProps = {
+    isAuthenticated: boolean;
+};
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
-function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; onClose: () => void }) {
+function TeaModal({ tea, isOpen, onClose, isAuthenticated }: { tea: Tea | null; isOpen: boolean; onClose: () => void; isAuthenticated: boolean }) {
     const addToCart = useCartStore((state) => state.addToCart);
     if (!tea) return null;
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        if (!isAuthenticated) {
+            // Open login modal/dropdown
+            signIn("google", { callbackUrl: window.location.href });
+            return;
+        }
+
+        // Get the button position for the animation
+        const rect = (e.target as HTMLElement).getBoundingClientRect();
+        const position = {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+        };
+
+        addToCart(tea, position);
+        // Close the modal after adding to cart
+        onClose();
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -69,23 +93,15 @@ function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; 
                             </div>
                             <motion.button
                                 className="w-full rounded-2xl py-3 font-semibold"
-                                style={{ backgroundColor: palette.accent, color: palette.dark }}
+                                style={{
+                                    backgroundColor: isAuthenticated ? palette.accent : palette.dark,
+                                    color: isAuthenticated ? palette.dark : palette.bg
+                                }}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                onClick={(e) => {
-                                    // Get the button position for the animation
-                                    const rect = (e.target as HTMLElement).getBoundingClientRect();
-                                    const position = {
-                                        x: rect.left + rect.width / 2,
-                                        y: rect.top + rect.height / 2,
-                                    };
-
-                                    addToCart(tea, position);
-                                    // Close the modal after adding to cart
-                                    onClose();
-                                }}
+                                onClick={handleAddToCart}
                             >
-                                Add to Cart
+                                {isAuthenticated ? "Add to Cart" : "Login to Add to Cart"}
                             </motion.button>
                         </motion.div>
                     </motion.div>
@@ -101,7 +117,7 @@ const fetchTeas = async (): Promise<Tea[]> => {
     return res.json();
 };
 
-export default function TeaCollection() {
+export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
     const { data: teas = [], isLoading, error } = useQuery<Tea[]>({ queryKey: ["teas"], queryFn: fetchTeas, staleTime: 5 * 60 * 1000 });
     const [hoveredTea, setHoveredTea] = useState<string | null>(null);
     const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
@@ -154,7 +170,7 @@ export default function TeaCollection() {
                     Single Origin
                 </motion.span>
             </motion.div>
-            <motion.div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
+            <motion.div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3 lg:gap-4" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
                 <AnimatePresence>
                     {teas.map((tea) => (
                         <motion.div
@@ -214,10 +230,14 @@ export default function TeaCollection() {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            openTeaModal(tea);
+                                            if (!isAuthenticated) {
+                                                signIn("google", { callbackUrl: window.location.href });
+                                            } else {
+                                                openTeaModal(tea);
+                                            }
                                         }}
                                     >
-                                        View Details
+                                        {isAuthenticated ? "View Details" : "Login to View"}
                                     </motion.button>
                                 </div>
                             </div>
@@ -225,7 +245,7 @@ export default function TeaCollection() {
                     ))}
                 </AnimatePresence>
             </motion.div>
-            <TeaModal tea={selectedTea} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <TeaModal tea={selectedTea} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isAuthenticated={isAuthenticated} />
         </div>
     );
 }

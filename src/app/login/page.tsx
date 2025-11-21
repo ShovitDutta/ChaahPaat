@@ -1,38 +1,29 @@
 "use client";
-import { Suspense } from "react";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import LoginForm from "@/components/auth/LoginForm";
-import { Squircle } from "@/components/squircle";
-import { StickyCartBar } from "@/components/sticky-cart-bar";
-import { AddToCartAnimation } from "@/components/add-to-cart-animation";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            redirect("/");
+        }
+    }, [status]);
+
+    if (status === "authenticated") {
+        return null;
+    }
+
+    // For unauthenticated users, redirect to home page where login buttons are available
+    if (status === "unauthenticated") {
+        redirect("/");
+    }
+
     return (
-        <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
-            <Header />
-            <div className="min-h-[80vh] flex items-center justify-center py-12 px-4">
-                <div className="w-full max-w-md">
-                    <Squircle className="p-8" innerClassName="space-y-6" ariaLabel="login">
-                        <div className="text-center">
-                            <h1 className="text-3xl font-bold" style={{ color: "#1D1A05" }}>
-                                Welcome to Chaah Paat
-                            </h1>
-                            <p className="mt-2 text-sm" style={{ color: "#1D1A05" }}>
-                                Sign in to access your tea collection
-                            </p>
-                        </div>
-                        <Suspense fallback={<div className="text-center py-4">Loading...</div>}>
-                            <LoginForm />
-                        </Suspense>
-                    </Squircle>
-                </div>
-            </div>
-            <div className="px-4">
-                <Footer />
-            </div>
-            <StickyCartBar />
-            <AddToCartAnimation />
-        </main>
+        <div className="min-h-screen flex items-center justify-center">
+            <p>Loading...</p>
+        </div>
     );
 }

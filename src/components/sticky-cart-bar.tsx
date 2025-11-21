@@ -27,7 +27,6 @@ export const StickyCartBar = () => {
                     className="rounded-2xl p-4 shadow-xl backdrop-blur-lg"
                     style={{
                         backgroundColor: `${palette.squircle}F5`,
-                        border: `2px solid ${palette.dark}20`,
                     }}
                 >
                     <div className="flex justify-between items-center mb-3">
@@ -42,8 +41,7 @@ export const StickyCartBar = () => {
                         {items.map((item) => (
                             <motion.div
                                 key={item.id}
-                                className="flex items-center justify-between py-2 border-b border-gray-200"
-                                style={{ borderColor: `${palette.dark}20` }}
+                                className="flex items-center justify-between py-2"
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
@@ -81,7 +79,7 @@ export const StickyCartBar = () => {
                             </motion.div>
                         ))}
                     </div>
-                    <div className="flex justify-between items-center mt-4 pt-3 border-t" style={{ borderColor: `${palette.dark}20` }}>
+                    <div className="flex justify-between items-center mt-4 pt-3">
                         <div>
                             <p className="text-sm opacity-80" style={{ color: palette.dark }}>
                                 Total Items: {cartTotal}

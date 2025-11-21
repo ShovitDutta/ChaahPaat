@@ -42,7 +42,6 @@ export function Header() {
                         backgroundColor: isScrolled ? `${palette.squircle}F5` : `${palette.squircle}E5`,
                         backdropFilter: "blur(20px)",
                         WebkitBackdropFilter: "blur(20px)",
-                        border: `3px solid ${palette.dark}15`,
                     }}
                 >
                     <nav className="flex items-center justify-between gap-2 sm:gap-4 px-2 sm:px-4">
@@ -124,11 +123,10 @@ export function Header() {
                             ) : (
                                 <motion.a
                                     href="/login"
-                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all gradient-border-hover"
+                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all"
                                     style={{
                                         backgroundColor: palette.accent,
                                         color: palette.dark,
-                                        border: `2px solid ${palette.dark}15`,
                                     }}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}

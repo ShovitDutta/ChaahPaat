@@ -10,8 +10,8 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
     return (
         <>
             <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
-            <div className="pt-20 sm:pt-24 lg:pt-28 space-y-12 sm:space-y-16 lg:space-y-20 px-4 py-8 sm:py-10 lg:py-12">
-                <div className="mx-auto max-w-7xl py-4 sm:py-6 lg:py-8">
+            <div className="pt-16 sm:pt-20 lg:pt-24 space-y-6 sm:space-y-8 lg:space-y-10 px-4 py-6 sm:py-7 lg:py-8">
+                <div className="mx-auto max-w-7xl py-2 sm:py-3 lg:py-4">
                     <motion.div className="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
                         <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.p
@@ -65,10 +65,9 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     Explore Collection
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all"
                                     href="#brewing"
                                     style={{
-                                        border: `3px solid ${palette.dark}20`,
                                         color: palette.dark,
                                     }}
                                     whileInView={{ scale: 1.05, y: -2 }}
