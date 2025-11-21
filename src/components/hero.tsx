@@ -66,7 +66,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     <FaLeaf /> Explore Collection
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all flex items-center gap-2"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover flex items-center gap-2"
                                     href="#brewing"
                                     style={{
                                         color: palette.dark,

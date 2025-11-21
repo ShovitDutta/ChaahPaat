@@ -39,7 +39,7 @@ export function BrewingGuide() {
                 ].map((brew, i) => (
                     <motion.div key={brew.title} variants={fadeInUp} className="group col-span-1" whileHover={{ y: -5 }}>
                         <motion.div
-                            className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm"
+                            className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
                             style={{
                                 backgroundColor: `${palette.card}F0`,
                             }}

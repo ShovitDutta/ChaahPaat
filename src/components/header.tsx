@@ -127,7 +127,7 @@ export function Header() {
                             ) : (
                                 <motion.button
                                     onClick={() => signIn("google", { callbackUrl: window.location.href })}
-                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-1"
+                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-1 gradient-border-hover"
                                     style={{
                                         backgroundColor: palette.accent,
                                         color: palette.dark,

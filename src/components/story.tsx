@@ -45,7 +45,7 @@ export function OurStory() {
             </motion.div>
             <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
                 <motion.div
-                    className="rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm"
+                    className="rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm gradient-border-hover"
                     style={{
                         backgroundColor: `${palette.card}F0`,
                     }}

@@ -12,7 +12,7 @@ export function Footer() {
                 <div className="flex gap-2 sm:gap-3 lg:gap-4">
                     <motion.a
                         href="tel:+916900234165"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all flex items-center gap-2"
+                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover flex items-center gap-2"
                         style={{
                             color: palette.dark,
                         }}
@@ -26,7 +26,7 @@ export function Footer() {
                     </motion.a>
                     <motion.a
                         href="tel:+919883617119"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all flex items-center gap-2"
+                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover flex items-center gap-2"
                         style={{
                             color: palette.dark,
                         }}

@@ -52,10 +52,32 @@ h6,
     position: relative;
     z-index: 1;
 }
-/* Empty styles to remove the gradient border effect */
 .gradient-border-hover::before {
-    content: none;
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(45deg, #c1e0a8, #e5f2d9, #2a4810);
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
 }
 .gradient-border-hover:hover::before {
-    content: none;
+    opacity: 1;
+}
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
