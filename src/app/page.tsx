@@ -10,15 +10,40 @@ import TeaCollection from "@/components/tea-collection";
 import { BrewingGuide } from "@/components/brewing-guide";
 import { StickyCartBar } from "@/components/sticky-cart-bar";
 import { AddToCartAnimation } from "@/components/add-to-cart-animation";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 export default function TeaShopPage() {
+    const { data: session, status } = useSession();
+
+    // If not authenticated, redirect to login
+    if (status === "unauthenticated") {
+        redirect("/login");
+    }
+
+    // Show loading state while checking session
+    if (status === "loading") {
+        return (
+            <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
+                <Header />
+                <div className="min-h-[80vh] flex items-center justify-center">
+                    <p>Loading...</p>
+                </div>
+                <Footer />
+            </main>
+        );
+    }
+
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
     return (
         <main style={{ backgroundColor: "#FFFFFF", color: "#1D1A05" }} className="min-h-screen antialiased overflow-x-hidden">
             <Header />
