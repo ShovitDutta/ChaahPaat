@@ -16,14 +16,15 @@ export default auth((req) => {
     return undefined;
 });
 export const config = {
+    // Apply the middleware to all routes except static files and auth API routes
     matcher: [
         /*
          * Match all request paths except for the ones starting with:
-         * - api (API routes) - Auth routes are handled separately
+         * - api/auth (for handling authentication)
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
          */
-        "/((?!api|_next/static|_next/image|favicon.ico).*)",
+        "/((?!api/auth|_next/static|_next/image|favicon.ico).*)",
     ],
 };
