@@ -1,6 +1,7 @@
 "use client";
 import useCartStore from "@/store/cartStore";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 const palette = {
     bg: "#FFFFFF",
     card: "#E8F5E0",
@@ -95,7 +96,8 @@ export const StickyCartBar = () => {
                             >
                                 View Cart
                             </button>
-                            <button
+                            <Link
+                                href="/dashboard"
                                 className="px-4 py-2 rounded-2xl font-medium text-sm"
                                 style={{
                                     backgroundColor: palette.dark,
@@ -103,7 +105,7 @@ export const StickyCartBar = () => {
                                 }}
                             >
                                 Checkout
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

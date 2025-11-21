@@ -1,6 +1,7 @@
 import useCartStore from "@/store/cartStore";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaTrashAlt, FaShoppingBag, FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 const palette = {
     bg: "#FFFFFF",
@@ -136,7 +137,8 @@ const ModalCart = () => {
                                         >
                                             <FaArrowLeft /> Continue Shopping
                                         </button>
-                                        <button
+                                        <Link
+                                            href="/dashboard"
                                             className="flex-1 py-3 rounded-2xl font-semibold text-sm flex items-center justify-center gap-1"
                                             style={{
                                                 backgroundColor: palette.dark,
@@ -144,7 +146,7 @@ const ModalCart = () => {
                                             }}
                                         >
                                             Checkout <FaShoppingBag />
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </>

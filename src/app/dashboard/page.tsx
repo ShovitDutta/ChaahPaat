@@ -5,8 +5,13 @@ import { redirect } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { useSession, signOut } from "next-auth/react";
+import useCartStore from "@/store/cartStore";
 export default function DashboardPage() {
     const { data: session, status } = useSession();
+    const { items, getTotalItems, getCartTotal, clearCart } = useCartStore();
+    const totalItems = getTotalItems();
+    const cartTotal = getCartTotal();
+
     useEffect(() => {
         if (status === "unauthenticated") {
             // Redirect to home page where users can login
@@ -55,13 +60,59 @@ export default function DashboardPage() {
                                 Welcome to your dashboard!
                             </h2>
                             <p className="text-gray-700 mb-6">You are successfully logged in as {session.user?.email || "user"}.</p>
-                            <div className="flex space-x-4">
+
+                            {/* Cart Information Section */}
+                            {items.length > 0 ? (
+                                <div className="mb-8">
+                                    <h3 className="text-lg font-semibold mb-3" style={{ color: "#1D1A05" }}>
+                                        Your Cart ({totalItems} items)
+                                    </h3>
+                                    <div className="space-y-3">
+                                        {items.map((item) => (
+                                            <div key={item.id} className="flex justify-between items-center py-2 border-b border-gray-200">
+                                                <div className="flex items-center">
+                                                    <span className="text-2xl mr-3">{item.emoji}</span>
+                                                    <div>
+                                                        <p className="font-medium">{item.name}</p>
+                                                        <p className="text-sm text-gray-600">{item.tag}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center">
+                                                    <span className="mr-4">Qty: {item.quantity}</span>
+                                                    <span className="font-medium">₹{item.quantity}</span> {/* Assuming each item costs ₹1 as placeholder */}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between font-semibold">
+                                        <span>Total Items: {totalItems}</span>
+                                        <span>Cart Value: ₹{totalItems}</span> {/* Assuming each item costs ₹1 as placeholder */}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="mb-8">
+                                    <h3 className="text-lg font-semibold mb-3" style={{ color: "#1D1A05" }}>
+                                        Your Cart
+                                    </h3>
+                                    <p className="text-gray-700 mb-4">Your cart is currently empty. Start adding your favorite teas!</p>
+                                </div>
+                            )}
+
+                            <div className="flex flex-wrap gap-3">
                                 <Link href="/" className="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-md text-sm font-medium">
                                     Go Home
                                 </Link>
                                 <Link href="/" className="bg-gray-800 hover:bg-black text-white py-2 px-4 rounded-md text-sm font-medium">
                                     View Collection
                                 </Link>
+                                {items.length > 0 && (
+                                    <button
+                                        onClick={clearCart}
+                                        className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md text-sm font-medium"
+                                    >
+                                        Clear Cart
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
