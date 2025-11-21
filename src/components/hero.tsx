@@ -52,31 +52,44 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             </motion.p>
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover flex items-center gap-2"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block gradient-border-hover"
                                     href="#collection"
                                     style={{
-                                        backgroundColor: palette.accent,
+                                        backgroundColor: "rgba(229, 242, 217, 0.7)", // Similar to background of "চাপাত from Assam"
                                         color: palette.dark,
                                     }}
                                     whileInView={{ scale: 1.05, y: -2 }}
-                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        y: -2,
+                                    }}
                                     whileTap={{ scale: 0.95 }}
                                     viewport={{ once: false }}
                                 >
-                                    <FaLeaf /> Explore Collection
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        <FaLeaf /> Explore Collection
+                                    </span>
+                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 shadow-inner z-0 opacity-100" />
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all gradient-border-hover flex items-center gap-2"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block gradient-border-hover"
                                     href="#brewing"
                                     style={{
+                                        backgroundColor: "rgba(229, 242, 217, 0.7)", // Similar to background of "চাপাত from Assam"
                                         color: palette.dark,
                                     }}
                                     whileInView={{ scale: 1.05, y: -2 }}
-                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        y: -2,
+                                    }}
                                     whileTap={{ scale: 0.95 }}
                                     viewport={{ once: false }}
                                 >
-                                    <FaMugHot /> Brewing Guide
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        <FaMugHot /> Brewing Guide
+                                    </span>
+                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 shadow-inner z-0 opacity-100" />
                                 </motion.a>
                             </motion.div>
                         </motion.div>
