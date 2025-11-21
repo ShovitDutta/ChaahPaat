@@ -13,11 +13,15 @@ const connectionString =
   process.env.POSTGRES_URL ||
   process.env.DATABASE_URL!;
 
-export const connection = globalForDb.connection ?? postgres(connectionString, {
+// Neon/PostgreSQL connection options
+const connectionOptions = {
   max: 20,
-  // Ensure SSL is properly configured for Neon
   ssl: { rejectUnauthorized: false },
-});
-export const db = drizzle(connection);
+  // Ensure prepared statements work properly
+  prepare: false, // Disable prepared statements to match Neon requirements
+};
+
+export const connection = globalForDb.connection ?? postgres(connectionString, connectionOptions);
+export const db = drizzle(connection, { logger: true }); // Enable logger to see actual queries
 
 if (process.env.NODE_ENV !== "production") globalForDb.connection = connection;

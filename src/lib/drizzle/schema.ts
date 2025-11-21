@@ -9,6 +9,10 @@ export const users = pgTable("users", {
   image: varchar("image", { length: 255 }),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull()
+}, (table) => {
+  return {
+    emailIdx: index("users_email_idx").on(table.email),
+  };
 });
 
 // Accounts table - for Auth.js
@@ -30,6 +34,7 @@ export const accounts = pgTable("accounts", {
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull()
 }, (table) => {
   return {
+    providerIdx: index("accounts_provider_idx").on(table.provider, table.providerAccountId),
     compoundKey: primaryKey({
       columns: [table.provider, table.providerAccountId],
     }),
@@ -45,6 +50,10 @@ export const sessions = pgTable("sessions", {
   expires: timestamp("expires", { mode: "date" }).notNull(),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull()
+}, (table) => {
+  return {
+    expireIdx: index("sessions_expire_idx").on(table.expires),
+  };
 });
 
 // Verification Tokens table - for Auth.js

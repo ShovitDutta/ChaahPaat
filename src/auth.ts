@@ -3,6 +3,7 @@ import Google from "next-auth/providers/google";
 import type { NextAuthConfig } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/drizzle/db";
+import { accounts, sessions, users, verificationTokens } from "@/lib/drizzle/schema";
 
 declare module "next-auth" {
     interface Session {
@@ -11,7 +12,12 @@ declare module "next-auth" {
 }
 
 export const authConfig = {
-    adapter: DrizzleAdapter(db),
+    adapter: DrizzleAdapter(db, {
+        usersTable: users,
+        accountsTable: accounts,
+        sessionsTable: sessions,
+        verificationTokensTable: verificationTokens,
+    }),
     providers: [
         Google({
             clientId: process.env.GOOGLE_CLIENT_ID!,
