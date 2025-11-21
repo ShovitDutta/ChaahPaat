@@ -1,26 +1,20 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import useCartStore from '@/store/cartStore';
-
+import useCartStore from "@/store/cartStore";
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
-
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { getTotalItems } = useCartStore();
     const totalItems = getTotalItems();
-
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
     const openCart = () => {
-        // Open the sticky cart bar
         useCartStore.getState().setStickyBarOpen(true);
     };
-
     return (
         <motion.header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 sm:py-3 lg:py-4" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ type: "spring", stiffness: 100 }}>
             <div className="mx-auto max-w-7xl">
@@ -44,9 +38,7 @@ export function Header() {
                                 <Image src="/chaah-paat.png" alt="চাপাত logo" fill className="object-contain" />
                             </motion.div>
                             <div className="flex flex-col leading-tight">
-                                <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight bg-gradient-to-r from-emerald-700 to-teal-800 bg-clip-text text-transparent">
-                                    চাপাত
-                                </span>
+                                <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight bg-linear-to-r from-emerald-700 to-teal-800 bg-clip-text text-transparent">চাপাত</span>
                                 <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
                                     Nature's Finest Leaf
                                 </span>
@@ -76,20 +68,11 @@ export function Header() {
                         </div>
                         <div className="flex items-center gap-2">
                             {totalItems > 0 && (
-                                <motion.button
-                                    className="relative p-2 rounded-xl"
-                                    style={{ backgroundColor: palette.accent }}
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    onClick={openCart}
-                                >
+                                <motion.button className="relative p-2 rounded-xl" style={{ backgroundColor: palette.accent }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openCart}>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" style={{ color: palette.dark }}>
                                         <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                                     </svg>
-                                    <span
-                                        className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 text-xs rounded-full text-white"
-                                        style={{ backgroundColor: palette.dark }}
-                                    >
+                                    <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 text-xs rounded-full text-white" style={{ backgroundColor: palette.dark }}>
                                         {totalItems}
                                     </span>
                                 </motion.button>

@@ -1,15 +1,11 @@
 import { Squircle } from "./squircle";
 import { motion } from "framer-motion";
-
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
-const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
 export function Story() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="about" id="about">
             <motion.div className="text-center space-y-4 sm:space-y-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }}>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">
-                    About Us
-                </h2>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">About Us</h2>
                 <div className="max-w-4xl mx-auto">
                     <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
                         At Chaah Paat, we bring you the finest teas from the heart of Assam—handpicked from legendary tea regions like Mangaldoi, Dibrugarh, Tinsukia, Jorhat, Golaghat, and beyond.
@@ -21,14 +17,11 @@ export function Story() {
         </Squircle>
     );
 }
-
 export function OurStory() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12" ariaLabel="story" id="story">
             <motion.div className="space-y-4 sm:space-y-6" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-teal-600 to-green-700 bg-clip-text text-transparent">
-                    Our Story
-                </h2>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-teal-600 to-green-700 bg-clip-text text-transparent">Our Story</h2>
                 <div className="space-y-3 sm:space-y-4">
                     <p className="text-sm sm:text-base leading-relaxed opacity-80" style={{ color: palette.dark }}>
                         Our journey began not in an office, but in the early morning mist of Assam's tea gardens, where generations of growers have poured their hearts into every leaf. We grew up

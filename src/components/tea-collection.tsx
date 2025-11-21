@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import useCartStore from "@/store/cartStore";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
-import useCartStore from '@/store/cartStore';
-
 type Tea = { id: string; name: string; note: string; tag: string; emoji: string; description: string; origin: string; elevation: string; harvest: string };
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
-
 function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; onClose: () => void }) {
-    const addToCart = useCartStore(state => state.addToCart);
-
+    const addToCart = useCartStore((state) => state.addToCart);
     if (!tea) return null;
     return (
         <AnimatePresence>
@@ -80,7 +77,7 @@ function TeaModal({ tea, isOpen, onClose }: { tea: Tea | null; isOpen: boolean; 
                                     const rect = (e.target as HTMLElement).getBoundingClientRect();
                                     const position = {
                                         x: rect.left + rect.width / 2,
-                                        y: rect.top + rect.height / 2
+                                        y: rect.top + rect.height / 2,
                                     };
 
                                     addToCart(tea, position);
@@ -148,9 +145,7 @@ export default function TeaCollection() {
                 viewport={{ once: false }}
             >
                 <div>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-lime-500 to-teal-600 bg-clip-text text-transparent">
-                        Featured Collection
-                    </h2>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-lime-500 to-teal-600 bg-clip-text text-transparent">Featured Collection</h2>
                     <p className="mt-1 sm:mt-2 text-sm sm:text-base opacity-70" style={{ color: palette.dark }}>
                         Seasonal small-batch teas from Assam's finest gardens
                     </p>

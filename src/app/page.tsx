@@ -10,7 +10,6 @@ import TeaCollection from "@/components/tea-collection";
 import { BrewingGuide } from "@/components/brewing-guide";
 import { StickyCartBar } from "@/components/sticky-cart-bar";
 import { AddToCartAnimation } from "@/components/add-to-cart-animation";
-
 export default function TeaShopPage() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollYProgress } = useScroll();

@@ -1,47 +1,27 @@
 import NextAuth, { type DefaultSession } from "next-auth";
 import Google from "next-auth/providers/google";
 import type { NextAuthConfig } from "next-auth";
-
-// Extend the default session to include user ID
 declare module "next-auth" {
     interface Session {
-        user: {
-            id: string;
-        } & DefaultSession["user"];
+        user: { id: string } & DefaultSession["user"];
     }
 }
-
 export const authConfig = {
-    providers: [
-        Google({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        }),
-    ],
+    providers: [Google({ clientId: process.env.GOOGLE_CLIENT_ID!, clientSecret: process.env.GOOGLE_CLIENT_SECRET! })],
     callbacks: {
         async jwt({ token, account, profile }) {
-            if (account) {
-                token.id = profile?.sub as string; // Google's user ID
-            }
+            if (account) token.id = profile?.sub as string;
             return token;
         },
         async session({ session, token }) {
-            if (session.user) {
-                session.user.id = token.id as string;
-            }
+            if (session.user) session.user.id = token.id as string;
             return session;
         },
     },
-    pages: {
-        signIn: "/login",
-    },
+    pages: { signIn: "/login" },
     secret: process.env.NEXTAUTH_SECRET,
-    session: {
-        strategy: "jwt",
-        maxAge: 30 * 24 * 60 * 60, // 30 days
-    },
+    session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
 } satisfies NextAuthConfig;
-
 export const {
     handlers: { GET, POST },
     auth,

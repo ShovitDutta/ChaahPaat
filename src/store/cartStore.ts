@@ -1,5 +1,4 @@
 import { create } from "zustand";
-
 type CartItem = {
     id: string;
     tag: string;
@@ -12,12 +11,10 @@ type CartItem = {
     elevation: string;
     description: string;
 };
-
 type AnimationState = {
     isAnimating: boolean;
     fromPosition: { x: number; y: number } | null;
 };
-
 type CartState = {
     items: CartItem[];
     isStickyBarOpen: boolean;
@@ -41,36 +38,28 @@ const useCartStore = create<CartState>((set, get) => ({
     },
     addToCart: (item, position) => {
         const existingItem = get().items.find((cartItem) => cartItem.id === item.id);
-
-        // Set animation state if position is provided
         if (position) {
             set({ animation: { isAnimating: true, fromPosition: position } });
-            // Reset animation state after a short delay
             setTimeout(() => {
-                set(state => ({
-                    animation: { ...state.animation, isAnimating: false }
+                set((state) => ({
+                    animation: { ...state.animation, isAnimating: false },
                 }));
-            }, 1000); // Duration of animation
+            }, 1000);
         }
-
         if (existingItem) {
             set((state) => ({
-                items: state.items.map((cartItem) =>
-                    cartItem.id === item.id
-                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                        : cartItem
-                )
+                items: state.items.map((cartItem) => (cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem)),
             }));
         } else {
             set((state) => ({
                 items: [...state.items, { ...item, quantity: 1 }],
-                isStickyBarOpen: true
+                isStickyBarOpen: true,
             }));
         }
     },
     removeFromCart: (id) => {
         set((state) => ({
-            items: state.items.filter((item) => item.id !== id)
+            items: state.items.filter((item) => item.id !== id),
         }));
     },
     updateQuantity: (id, quantity) => {
@@ -79,11 +68,7 @@ const useCartStore = create<CartState>((set, get) => ({
             return;
         }
         set((state) => ({
-            items: state.items.map((item) =>
-                item.id === id
-                    ? { ...item, quantity }
-                    : item
-            )
+            items: state.items.map((item) => (item.id === id ? { ...item, quantity } : item)),
         }));
     },
     setStickyBarOpen: (isOpen) => {
@@ -102,5 +87,4 @@ const useCartStore = create<CartState>((set, get) => ({
         set({ animation });
     },
 }));
-
 export default useCartStore;

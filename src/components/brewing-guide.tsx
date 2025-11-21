@@ -1,15 +1,13 @@
 import { Squircle } from "./squircle";
 import { motion } from "framer-motion";
-
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
-
 export function BrewingGuide() {
     return (
         <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-6 sm:space-y-8" ariaLabel="brewing" id="brewing">
             <motion.h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}

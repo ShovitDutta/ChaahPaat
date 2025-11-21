@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useScroll, useSpring } from "framer-motion";
-
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
-
 export function Hero({ openCollection }: { openCollection: () => void }) {
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -34,13 +32,11 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             >
                                 Nature's Finest
                                 <motion.span
-                                    className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-2xl bg-gradient-to-r from-green-100 to-lime-100 shadow-inner"
+                                    className="relative inline-block mx-1 sm:mx-2 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 shadow-inner"
                                     whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
                                     transition={{ duration: 0.5, type: "tween" }}
                                 >
-                                    <span className="bg-gradient-to-r from-green-700 to-amber-800 bg-clip-text text-transparent font-bold">
-                                        চাপাত from Assam
-                                    </span>
+                                    <span className="bg-linear-to-r from-green-700 to-amber-800 bg-clip-text text-transparent font-bold">চাপাত from Assam</span>
                                 </motion.span>
                             </motion.h1>
                             <motion.p
