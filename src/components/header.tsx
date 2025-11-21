@@ -26,7 +26,7 @@ export function Header() {
     }, []);
 
     const openCart = () => {
-        useCartStore.getState().setStickyBarOpen(true);
+        useCartStore.getState().toggleCart();
     };
 
     const handleSignOut = () => {
@@ -121,8 +121,8 @@ export function Header() {
                                     </motion.button>
                                 </div>
                             ) : (
-                                <motion.a
-                                    href="/login"
+                                <motion.button
+                                    onClick={() => signIn("google", { callbackUrl: window.location.href })}
                                     className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all"
                                     style={{
                                         backgroundColor: palette.accent,
@@ -132,7 +132,7 @@ export function Header() {
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     Sign In
-                                </motion.a>
+                                </motion.button>
                             )}
                         </div>
                     </nav>

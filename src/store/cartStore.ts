@@ -24,6 +24,7 @@ type CartState = {
     getTotalItems: () => number;
     removeFromCart: (id: string) => void;
     setStickyBarOpen: (isOpen: boolean) => void;
+    toggleCart: () => void;
     addToCart: (item: Omit<CartItem, "quantity">, position?: { x: number; y: number }) => void;
     updateQuantity: (id: string, quantity: number) => void;
     setAnimation: (animation: AnimationState) => void;
@@ -35,6 +36,9 @@ const useCartStore = create<CartState>((set, get) => ({
     animation: {
         isAnimating: false,
         fromPosition: null,
+    },
+    toggleCart: () => {
+        set((state) => ({ isStickyBarOpen: !state.isStickyBarOpen }));
     },
     addToCart: (item, position) => {
         const existingItem = get().items.find((cartItem) => cartItem.id === item.id);
@@ -53,7 +57,7 @@ const useCartStore = create<CartState>((set, get) => ({
         } else {
             set((state) => ({
                 items: [...state.items, { ...item, quantity: 1 }],
-                isStickyBarOpen: true,
+                isStickyBarOpen: true, // Keep this to open the cart modal when first item is added
             }));
         }
     },

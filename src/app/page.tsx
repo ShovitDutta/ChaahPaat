@@ -8,7 +8,7 @@ import { useScroll, useSpring } from "framer-motion";
 import { Story, OurStory } from "@/components/story";
 import TeaCollection from "@/components/tea-collection";
 import { BrewingGuide } from "@/components/brewing-guide";
-import { StickyCartBar } from "@/components/sticky-cart-bar";
+import ModalCart from "@/ui/modal-cart";
 import { AddToCartAnimation } from "@/components/add-to-cart-animation";
 import { useSession } from "next-auth/react";
 
@@ -49,7 +49,7 @@ export default function TeaShopPage() {
             </div>
             {session?.user && (
                 <>
-                    <StickyCartBar />
+                    <ModalCart />
                     <AddToCartAnimation />
                 </>
             )}
