@@ -4,6 +4,7 @@ import { Playfair_Display } from "next/font/google";
 import { Roboto_Condensed } from "next/font/google";
 import TanStackProvider from "../providers/tanstack-provider";
 import FramerMotionProvider from "../providers/framer-motion-provider";
+import AuthSessionProvider from "../providers/SessionProvider";
 
 const playfairDisplay = Playfair_Display({
     variable: "--font-playfair-display",
@@ -22,9 +23,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en">
             <body className={`${playfairDisplay.variable} ${robotoCondensed.variable} antialiased`}>
-                <TanStackProvider>
-                    <FramerMotionProvider>{children}</FramerMotionProvider>
-                </TanStackProvider>
+                <AuthSessionProvider>
+                    <TanStackProvider>
+                        <FramerMotionProvider>{children}</FramerMotionProvider>
+                    </TanStackProvider>
+                </AuthSessionProvider>
             </body>
         </html>
     );
