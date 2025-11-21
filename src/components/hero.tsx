@@ -13,7 +13,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
             <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
             <div className="pt-16 sm:pt-20 lg:pt-24 space-y-6 sm:space-y-8 lg:space-y-10 px-4 py-6 sm:py-7 lg:py-8">
                 <div className="mx-auto max-w-7xl py-2 sm:py-3 lg:py-4">
-                    <motion.div className="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
+                    <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
                         <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.p
                                 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold opacity-60"
@@ -93,7 +93,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                 </motion.a>
                             </motion.div>
                         </motion.div>
-                        <motion.div className="relative flex justify-center md:justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                        <motion.div className="relative flex justify-center sm:justify-end md:justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.div
                                 className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80"
                                 initial={{ rotate: 0 }}
@@ -106,9 +106,6 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             <motion.a
                                 href="#collection"
                                 className="absolute h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
-                                style={{
-                                    backgroundColor: palette.squircle,
-                                }}
                                 initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
                                 whileInView={{
                                     scale: 1,
@@ -144,7 +141,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     },
                                 }}
                             >
-                                <Image src="/chaah-paat.png" alt="চাপাত tea" fill className="object-contain p-1" />
+                                <Image src="/chaah-paat.png" alt="চাপাত tea" fill className="object-contain" />
                             </motion.a>
                         </motion.div>
                     </motion.div>
