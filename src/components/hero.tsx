@@ -13,7 +13,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
             <motion.div className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 to-lime-400 origin-left z-60" style={{ scaleX }} />
             <div className="pt-16 sm:pt-20 lg:pt-24 space-y-6 sm:space-y-8 lg:space-y-10 px-4 py-6 sm:py-7 lg:py-8">
                 <div className="mx-auto max-w-7xl py-2 sm:py-3 lg:py-4">
-                    <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
+                    <motion.div className="grid grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center" variants={stagger} initial="initial" animate="animate">
                         <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.p
                                 className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold opacity-60"
@@ -50,9 +50,9 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             >
                                 Chaah Paat brings you Nature's Finest Leaf from Assam, paired with mindful brewing rituals for your daily moments of tranquility.
                             </motion.p>
-                            <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                            <motion.div className="flex flex-nowrap gap-3 sm:gap-4 pt-2 sm:pt-4 overflow-x-auto pb-2" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block flex-shrink-0 gradient-border-hover"
                                     href="#collection"
                                     style={{
                                         backgroundColor: "rgba(229, 242, 217, 0.7)", // Similar to background of "চাপাত from Assam"
@@ -69,10 +69,10 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     <span className="relative z-10 flex items-center gap-2">
                                         <FaLeaf /> Explore Collection
                                     </span>
-                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 shadow-inner z-0 opacity-100" />
+                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 z-0 opacity-100" />
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold flex items-center gap-2 relative inline-block flex-shrink-0 gradient-border-hover"
                                     href="#brewing"
                                     style={{
                                         backgroundColor: "rgba(229, 242, 217, 0.7)", // Similar to background of "চাপাত from Assam"
@@ -89,13 +89,13 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     <span className="relative z-10 flex items-center gap-2">
                                         <FaMugHot /> Brewing Guide
                                     </span>
-                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 shadow-inner z-0 opacity-100" />
+                                    <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 z-0 opacity-100" />
                                 </motion.a>
                             </motion.div>
                         </motion.div>
-                        <motion.div className="relative flex justify-center sm:justify-end md:justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
+                        <motion.div className="relative flex justify-end" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                             <motion.div
-                                className="relative h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80"
+                                className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
                                 initial={{ rotate: 0 }}
                                 whileInView={{ rotate: 360 }}
                                 transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
@@ -105,7 +105,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             </motion.div>
                             <motion.a
                                 href="#collection"
-                                className="absolute h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+                                className="absolute h-40 w-40 sm:h-48 sm:w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 rounded-2xl overflow-hidden cursor-pointer"
                                 initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
                                 whileInView={{
                                     scale: 1,
