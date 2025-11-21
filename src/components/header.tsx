@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaShoppingCart, FaUser, FaSignOutAlt } from "react-icons/fa";
 
 const palette = {
     bg: "#FFFFFF",
@@ -63,18 +63,24 @@ export function Header() {
                             </div>
                         </motion.div>
                         <div className="hidden md:flex gap-6 lg:gap-8 text-sm font-medium">
-                            {["About", "Collection", "Story", "Brewing"].map((item, i) => (
+                            {[
+                                { name: "About", icon: "📖" },
+                                { name: "Collection", icon: "🌿" },
+                                { name: "Story", icon: "📜" },
+                                { name: "Brewing", icon: "🫖" }
+                            ].map((item, i) => (
                                 <motion.a
-                                    key={item}
-                                    href={item === "About" ? "#about" : `#${item.toLowerCase()}`}
-                                    className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-2xl gradient-border-hover"
+                                    key={item.name}
+                                    href={item.name === "About" ? "#about" : `#${item.name.toLowerCase()}`}
+                                    className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-2xl gradient-border-hover flex flex-col items-center"
                                     style={{ color: palette.dark }}
                                     whileHover={{ y: -2 }}
                                     initial={{ opacity: 0, y: -20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
                                 >
-                                    {item}
+                                    <span className="text-lg mb-1">{item.icon}</span>
+                                    <span>{item.name}</span>
                                     <motion.span
                                         className="absolute -bottom-1 left-0 h-0.5 bg-current"
                                         initial={{ width: 0 }}
@@ -87,9 +93,7 @@ export function Header() {
                         <div className="flex items-center gap-2">
                             {totalItems > 0 && (
                                 <motion.button className="relative p-2 rounded-xl" style={{ backgroundColor: palette.accent }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openCart}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" style={{ color: palette.dark }}>
-                                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                    </svg>
+                                    <FaShoppingCart className="h-5 w-5" style={{ color: palette.dark }} />
                                     <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 text-xs rounded-full text-white" style={{ backgroundColor: palette.dark }}>
                                         {totalItems}
                                     </span>
@@ -103,14 +107,12 @@ export function Header() {
                                         style={{ color: palette.dark }}
                                         whileHover={{ scale: 1.05 }}
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                        </svg>
+                                        <FaUser className="h-5 w-5" />
                                         <span>Profile</span>
                                     </motion.a>
                                     <motion.button
                                         onClick={handleSignOut}
-                                        className="rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium"
+                                        className="rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-1"
                                         style={{
                                             backgroundColor: palette.accent,
                                             color: palette.dark,
@@ -118,6 +120,7 @@ export function Header() {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
+                                        <FaSignOutAlt />
                                         Sign Out
                                     </motion.button>
                                 </div>

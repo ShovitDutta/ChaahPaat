@@ -5,6 +5,7 @@ import useCartStore from "@/store/cartStore";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import { signIn } from "next-auth/react";
+import { FaTimes } from "react-icons/fa";
 type Tea = { id: string; name: string; note: string; tag: string; emoji: string; description: string; origin: string; elevation: string; harvest: string };
 type TeaCollectionProps = {
     isAuthenticated: boolean;
@@ -62,7 +63,7 @@ function TeaModal({ tea, isOpen, onClose, isAuthenticated }: { tea: Tea | null; 
                                     </motion.span>
                                 </div>
                                 <button type="button" onClick={onClose} className="text-2xl hover:scale-110 transition-transform" style={{ color: palette.dark }}>
-                                    ×
+                                    <FaTimes />
                                 </button>
                             </div>
                             <h3 className="text-2xl font-bold mb-4" style={{ color: palette.dark }}>

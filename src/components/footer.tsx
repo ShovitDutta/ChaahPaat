@@ -1,5 +1,6 @@
 import { Squircle } from "@/ui/squircle";
 import { motion } from "framer-motion";
+import { FaPhone } from "react-icons/fa";
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 export function Footer() {
     return (
@@ -11,7 +12,7 @@ export function Footer() {
                 <div className="flex gap-2 sm:gap-3 lg:gap-4">
                     <motion.a
                         href="tel:+916900234165"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all"
+                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all flex items-center gap-2"
                         style={{
                             color: palette.dark,
                         }}
@@ -21,11 +22,11 @@ export function Footer() {
                         }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Contact: +91 6900234165
+                        <FaPhone className="text-xs" /> +91 6900234165
                     </motion.a>
                     <motion.a
                         href="tel:+919883617119"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all"
+                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all flex items-center gap-2"
                         style={{
                             color: palette.dark,
                         }}
@@ -35,7 +36,7 @@ export function Footer() {
                         }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        +91 9883617119
+                        <FaPhone className="text-xs" /> +91 9883617119
                     </motion.a>
                 </div>
             </motion.div>

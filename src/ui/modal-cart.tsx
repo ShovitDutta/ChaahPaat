@@ -1,5 +1,6 @@
 import useCartStore from "@/store/cartStore";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaTimes, FaTrashAlt, FaShoppingBag, FaArrowLeft } from "react-icons/fa";
 
 const palette = {
     bg: "#FFFFFF",
@@ -43,15 +44,15 @@ const ModalCart = () => {
                 >
                     <div className="p-6">
                         <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-xl font-bold" style={{ color: palette.dark }}>
-                                Your Cart ({totalItems})
+                            <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: palette.dark }}>
+                                <FaShoppingBag /> Your Cart ({totalItems})
                             </h2>
-                            <button 
-                                onClick={handleClose} 
+                            <button
+                                onClick={handleClose}
                                 className="text-2xl hover:scale-110 transition-transform"
                                 style={{ color: palette.dark }}
                             >
-                                ×
+                                <FaTimes />
                             </button>
                         </div>
 
@@ -106,10 +107,10 @@ const ModalCart = () => {
                                                     +
                                                 </button>
                                                 <button
-                                                    className="ml-2 text-sm text-red-500 hover:text-red-700"
+                                                    className="ml-2 text-red-500 hover:text-red-700"
                                                     onClick={() => removeFromCart(item.id)}
                                                 >
-                                                    🗑️
+                                                    <FaTrashAlt />
                                                 </button>
                                             </div>
                                         </motion.div>
@@ -126,23 +127,23 @@ const ModalCart = () => {
                                     
                                     <div className="flex space-x-3">
                                         <button
-                                            className="flex-1 py-3 rounded-2xl font-semibold text-sm"
+                                            className="flex-1 py-3 rounded-2xl font-semibold text-sm flex items-center justify-center gap-1"
                                             style={{
                                                 backgroundColor: palette.accent,
                                                 color: palette.dark,
                                             }}
                                             onClick={handleClose}
                                         >
-                                            Continue Shopping
+                                            <FaArrowLeft /> Continue Shopping
                                         </button>
                                         <button
-                                            className="flex-1 py-3 rounded-2xl font-semibold text-sm"
+                                            className="flex-1 py-3 rounded-2xl font-semibold text-sm flex items-center justify-center gap-1"
                                             style={{
                                                 backgroundColor: palette.dark,
                                                 color: palette.squircle,
                                             }}
                                         >
-                                            Checkout
+                                            Checkout <FaShoppingBag />
                                         </button>
                                     </div>
                                 </div>

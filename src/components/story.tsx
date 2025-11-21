@@ -1,5 +1,6 @@
 import { Squircle } from "@/ui/squircle";
 import { motion } from "framer-motion";
+import { FaArrowRight } from "react-icons/fa";
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 export function Story() {
     return (
@@ -38,7 +39,7 @@ export function OurStory() {
                 </div>
                 <motion.div className="pt-2 sm:pt-4" whileHover={{ x: 5 }}>
                     <a href="#about" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: palette.dark }}>
-                        Learn More <span className="text-lg">→</span>
+                        Learn More <FaArrowRight className="text-sm" />
                     </a>
                 </motion.div>
             </motion.div>

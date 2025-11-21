@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useScroll, useSpring } from "framer-motion";
+import { FaLeaf, FaMugHot } from "react-icons/fa";
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
 const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
@@ -51,7 +52,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                             </motion.p>
                             <motion.div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: false }}>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold shadow-xl hover:shadow-2xl transition-all gradient-border-hover flex items-center gap-2"
                                     href="#collection"
                                     style={{
                                         backgroundColor: palette.accent,
@@ -62,10 +63,10 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     whileTap={{ scale: 0.95 }}
                                     viewport={{ once: false }}
                                 >
-                                    Explore Collection
+                                    <FaLeaf /> Explore Collection
                                 </motion.a>
                                 <motion.a
-                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all"
+                                    className="rounded-2xl px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold backdrop-blur-sm hover:backdrop-blur-md transition-all flex items-center gap-2"
                                     href="#brewing"
                                     style={{
                                         color: palette.dark,
@@ -75,7 +76,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     whileTap={{ scale: 0.95 }}
                                     viewport={{ once: false }}
                                 >
-                                    Brewing Guide
+                                    <FaMugHot /> Brewing Guide
                                 </motion.a>
                             </motion.div>
                         </motion.div>
