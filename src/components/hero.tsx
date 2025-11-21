@@ -67,7 +67,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     viewport={{ once: false }}
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
-                                        <FaLeaf /> Explore Collection
+                                        <FaLeaf /> <span className="hidden sm:inline">Explore </span>Collection
                                     </span>
                                     <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 z-0 opacity-100" />
                                 </motion.a>
@@ -87,7 +87,7 @@ export function Hero({ openCollection }: { openCollection: () => void }) {
                                     viewport={{ once: false }}
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
-                                        <FaMugHot /> Brewing Guide
+                                        <FaMugHot /> <span className="hidden sm:inline">Brewing </span>Guide
                                     </span>
                                     <span className="absolute inset-0 rounded-2xl bg-linear-to-r from-green-100 to-lime-100 z-0 opacity-100" />
                                 </motion.a>
