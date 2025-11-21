@@ -1,16 +1,16 @@
 {
     "name": "chaah-paat",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "biome check",
-        "format": "biome format --write",
-        "db:generate": "drizzle-kit generate",
+        "db:push": "drizzle-kit push",
         "db:migrate": "tsx migrate.ts",
-        "db:push": "drizzle-kit push"
+        "format": "biome format --write",
+        "db:generate": "drizzle-kit generate"
     },
     "dependencies": {
         "@auth/core": "^0.41.0",

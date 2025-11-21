@@ -2,19 +2,37 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
-const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
+import { useSession, signIn, signOut } from "next-auth/react";
+
+const palette = {
+    bg: "#FFFFFF",
+    card: "#E8F5E0",
+    squircle: "#D9F0CC",
+    accent: "#A8D88A",
+    dark: "#1D1A05",
+    shadow: "#142506"
+};
+
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const { data: session, status } = useSession();
     const { getTotalItems } = useCartStore();
     const totalItems = getTotalItems();
+
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
     const openCart = () => {
         useCartStore.getState().setStickyBarOpen(true);
     };
+
+    const handleSignOut = () => {
+        signOut({ redirect: true, callbackUrl: "/" });
+    };
+
     return (
         <motion.header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 sm:py-3 lg:py-4" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ type: "spring", stiffness: 100 }}>
             <div className="mx-auto max-w-7xl">
@@ -77,19 +95,47 @@ export function Header() {
                                     </span>
                                 </motion.button>
                             )}
-                            <motion.a
-                                href="#collection"
-                                className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all gradient-border-hover"
-                                style={{
-                                    backgroundColor: palette.accent,
-                                    color: palette.dark,
-                                    border: `2px solid ${palette.dark}15`,
-                                }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                Shop Now
-                            </motion.a>
+                            {status === "authenticated" && session?.user ? (
+                                <div className="flex items-center gap-3">
+                                    <motion.a
+                                        href="/dashboard"
+                                        className="hidden sm:flex items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium"
+                                        style={{ color: palette.dark }}
+                                        whileHover={{ scale: 1.05 }}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                        </svg>
+                                        <span>Profile</span>
+                                    </motion.a>
+                                    <motion.button
+                                        onClick={handleSignOut}
+                                        className="rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium"
+                                        style={{
+                                            backgroundColor: palette.accent,
+                                            color: palette.dark,
+                                        }}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        Sign Out
+                                    </motion.button>
+                                </div>
+                            ) : (
+                                <motion.a
+                                    href="/login"
+                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all gradient-border-hover"
+                                    style={{
+                                        backgroundColor: palette.accent,
+                                        color: palette.dark,
+                                        border: `2px solid ${palette.dark}15`,
+                                    }}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    Sign In
+                                </motion.a>
+                            )}
                         </div>
                     </nav>
                 </motion.div>

@@ -5,7 +5,7 @@ const publicRoutes = ["/login", "/api/auth", "/api/auth/callback", "/api/teas"];
 export default auth((req) => {
     const isPublicRoute = publicRoutes.some((route) => req.nextUrl.pathname === route || req.nextUrl.pathname.startsWith(route + "/") || req.nextUrl.pathname.startsWith(route));
     if (req.auth && req.nextUrl.pathname === "/login") {
-        const redirectUrl = new URL("/dashboard", req.url);
+        const redirectUrl = new URL("/", req.url);
         return Response.redirect(redirectUrl);
     }
     if (!req.auth && !isPublicRoute && req.nextUrl.pathname !== "/login") {
