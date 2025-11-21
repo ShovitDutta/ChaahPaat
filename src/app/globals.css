@@ -81,3 +81,15 @@ h6,
         background-position: 0% 50%;
     }
 }
+
+.grid-cols-13-7 {
+    grid-template-columns: 13fr 7fr;
+}
+
+.col-span-6-5 {
+    grid-column: span 6.5 / span 6.5;
+}
+
+.col-span-3-5 {
+    grid-column: span 3.5 / span 3.5;
+}
