@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { FaGoogle } from "react-icons/fa";
 
 const palette = {
     bg: "#FFFFFF",
@@ -123,7 +124,7 @@ export function Header() {
                             ) : (
                                 <motion.button
                                     onClick={() => signIn("google", { callbackUrl: window.location.href })}
-                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all"
+                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-1"
                                     style={{
                                         backgroundColor: palette.accent,
                                         color: palette.dark,
@@ -131,6 +132,7 @@ export function Header() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
+                                    <FaGoogle className="text-base" />
                                     Sign In
                                 </motion.button>
                             )}
