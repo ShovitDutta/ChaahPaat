@@ -1,70 +1,92 @@
 import { Squircle } from "./squircle";
 import { motion } from "framer-motion";
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
-const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
-const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
+const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
+
+const steps = [
+    {
+        icon: "💧",
+        title: "Fresh Water",
+        desc: "Start with fresh, cold filtered water. Bring it to a rolling boil for black teas, or just short of boiling for green teas.",
+    },
+    {
+        icon: "🥄",
+        title: "Measure",
+        desc: "Use one teaspoon (approx 2g) of tea leaves per cup (200ml). Adjust according to your taste preference.",
+    },
+    {
+        icon: "⏱️",
+        title: "Steep",
+        desc: "Pour water over the leaves. Steep for 3-5 minutes for black tea, or 2-3 minutes for green tea. Don't over-steep!",
+    },
+    {
+        icon: "😌",
+        title: "Savor",
+        desc: "Strain the leaves and let the tea cool slightly. Take a moment to inhale the aroma before your first sip.",
+    },
+];
+
 export function BrewingGuide() {
     return (
-        <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-4 sm:space-y-5" ariaLabel="brewing" id="brewing">
-            <motion.h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-linear-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-            >
-                Brewing Guide
-            </motion.h2>
-            <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4" variants={stagger} initial="initial" whileInView="animate" viewport={{ once: false }}>
-                {[
-                    {
-                        title: "Water",
-                        text: "Fresh filtered water; 70–80°C for green, 85–95°C for oolong, 95–100°C for black teas.",
-                        icon: "💧",
-                    },
-                    {
-                        title: "Leaf Ratio",
-                        text: "2–3g per 250ml for western style; 5–7g for gongfu brewing with shorter steeps.",
-                        icon: "🍃",
-                    },
-                    {
-                        title: "Time",
-                        text: "2–3min for green, 3–4min for oolong, 4–5min for black; adjust in 30s increments.",
-                        icon: "⏱️",
-                    },
-                    {
-                        title: "Steeping",
-                        text: "Multiple short steeps bring out nuanced flavors; first steep 15-20s, subsequent steeps 5-10s longer.",
-                        icon: "🫖",
-                    },
-                ].map((brew, i) => (
-                    <motion.div key={brew.title} variants={fadeInUp} className="group col-span-1" whileHover={{ y: -5 }}>
+        <section id="brewing-guide" className="py-20">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                    <span className="text-sm font-bold tracking-widest uppercase mb-2 block" style={{ color: palette.accent }}>
+                        The Perfect Cup
+                    </span>
+                    <h2 className="text-4xl lg:text-5xl font-bold" style={{ color: palette.dark }}>
+                        Brewing Guide
+                    </h2>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {steps.map((step, index) => (
                         <motion.div
-                            className="relative rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-lg hover:shadow-2xl transition-all backdrop-blur-sm gradient-border-hover"
-                            style={{
-                                backgroundColor: `${palette.card}F0`,
-                            }}
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                            className="relative group"
                         >
-                            <motion.div
-                                className="text-2xl sm:text-3xl mb-3 sm:mb-4"
-                                animate={{ rotate: [0, -5, 5, 0] }}
-                                transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    delay: i * 0.3,
-                                }}
+                            <div
+                                className="h-full p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2"
+                                style={{ backgroundColor: palette.card }}
                             >
-                                {brew.icon}
-                            </motion.div>
-                            <h4 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3" style={{ color: palette.dark }}>
-                                {brew.title}
-                            </h4>
-                            <p className="text-xs sm:text-sm leading-relaxed opacity-80" style={{ color: palette.dark }}>
-                                {brew.text}
-                            </p>
+                                <div
+                                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm group-hover:scale-110 transition-transform"
+                                    style={{ backgroundColor: palette.bg }}
+                                >
+                                    {step.icon}
+                                </div>
+                                <h3 className="text-xl font-bold mb-4" style={{ color: palette.dark }}>
+                                    {step.title}
+                                </h3>
+                                <p className="leading-relaxed opacity-80" style={{ color: palette.dark }}>
+                                    {step.desc}
+                                </p>
+                            </div>
+                            
+                            {/* Connector Line (Desktop only) */}
+                            {index < steps.length - 1 && (
+                                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 opacity-20" style={{ backgroundColor: palette.dark }} />
+                            )}
                         </motion.div>
-                    </motion.div>
-                ))}
-            </motion.div>
-        </Squircle>
+                    ))}
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-16 p-8 rounded-3xl text-center max-w-3xl mx-auto"
+                    style={{ backgroundColor: `${palette.accent}15`, border: `1px dashed ${palette.accent}` }}
+                >
+                    <p className="text-lg font-medium italic" style={{ color: palette.dark }}>
+                        "Pro Tip: For the best flavor, pre-warm your teapot or cup with hot water before brewing."
+                    </p>
+                </motion.div>
+            </div>
+        </section>
     );
 }

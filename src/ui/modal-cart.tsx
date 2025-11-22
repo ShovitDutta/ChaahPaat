@@ -3,20 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaTrashAlt, FaShoppingBag, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
-const palette = {
-    bg: "#FFFFFF",
-    card: "#E8F5E0",
-    squircle: "#D9F0CC",
-    accent: "#A8D88A",
-    dark: "#1D1A05",
-    shadow: "#142506",
-};
+const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
 
 const ModalCart = () => {
     const { items, isStickyBarOpen, setStickyBarOpen, updateQuantity, getTotalItems, removeFromCart } = useCartStore();
     const totalItems = getTotalItems();
     const cartTotal = items.reduce((total, item) => total + item.quantity * 1, 0); // Assuming each item costs 1 as a placeholder
-    const cartSubtotal = items.reduce((total, item) => total + (item.quantity * 1), 0); // Assuming each item costs 1 as a placeholder
+    const cartSubtotal = items.reduce((total, item) => total + item.quantity * 1, 0); // Assuming each item costs 1 as a placeholder
 
     if (!isStickyBarOpen) return null;
 
@@ -48,19 +41,19 @@ const ModalCart = () => {
                             <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: palette.dark }}>
                                 <FaShoppingBag /> Your Cart ({totalItems})
                             </h2>
-                            <button
-                                onClick={handleClose}
-                                className="text-2xl hover:scale-110 transition-transform"
-                                style={{ color: palette.dark }}
-                            >
+                            <button onClick={handleClose} className="text-2xl hover:scale-110 transition-transform" style={{ color: palette.dark }}>
                                 <FaTimes />
                             </button>
                         </div>
 
                         {items.length === 0 ? (
                             <div className="text-center py-8">
-                                <p className="text-lg" style={{ color: palette.dark }}>Your cart is empty</p>
-                                <p className="text-sm opacity-70 mt-2" style={{ color: palette.dark }}>Add some delicious tea to your cart!</p>
+                                <p className="text-lg" style={{ color: palette.dark }}>
+                                    Your cart is empty
+                                </p>
+                                <p className="text-sm opacity-70" style={{ color: palette.dark }}>
+                                    Add some delicious tea to your cart!
+                                </p>
                             </div>
                         ) : (
                             <>
@@ -85,7 +78,7 @@ const ModalCart = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                            
+
                                             <div className="flex items-center space-x-2">
                                                 <button
                                                     className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
@@ -94,10 +87,7 @@ const ModalCart = () => {
                                                 >
                                                     -
                                                 </button>
-                                                <span 
-                                                    className="w-8 text-center font-bold" 
-                                                    style={{ color: palette.dark }}
-                                                >
+                                                <span className="w-8 text-center font-bold" style={{ color: palette.dark }}>
                                                     {item.quantity}
                                                 </span>
                                                 <button
@@ -107,10 +97,7 @@ const ModalCart = () => {
                                                 >
                                                     +
                                                 </button>
-                                                <button
-                                                    className="ml-2 text-red-500 hover:text-red-700"
-                                                    onClick={() => removeFromCart(item.id)}
-                                                >
+                                                <button className="ml-2 text-red-500 hover:text-red-700" onClick={() => removeFromCart(item.id)}>
                                                     <FaTrashAlt />
                                                 </button>
                                             </div>
@@ -125,7 +112,7 @@ const ModalCart = () => {
                                             ₹{cartSubtotal.toFixed(2)}
                                         </span>
                                     </div>
-                                    
+
                                     <div className="flex space-x-3">
                                         <button
                                             className="flex-1 py-3 rounded-2xl font-semibold text-sm flex items-center justify-center gap-1"

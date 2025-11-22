@@ -3,145 +3,106 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { FaGoogle, FaShoppingCart, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaGoogle, FaShoppingBag, FaUser, FaSignOutAlt } from "react-icons/fa";
 
-const palette = {
-    bg: "#FFFFFF",
-    card: "#E8F5E0",
-    squircle: "#D9F0CC",
-    accent: "#A8D88A",
-    dark: "#1D1A05",
-    shadow: "#142506"
-};
+const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { data: session, status } = useSession();
-    const { getTotalItems } = useCartStore();
-    const totalItems = getTotalItems();
+    const cart = useCartStore((state) => state.items);
+    const toggleCart = useCartStore((state) => state.toggleCart);
+    const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const openCart = () => {
-        useCartStore.getState().toggleCart();
-    };
-
-    const handleSignOut = () => {
-        signOut({ redirect: true, callbackUrl: "/" });
-    };
-
     return (
-        <motion.header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 sm:py-3 lg:py-4" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ type: "spring", stiffness: 100 }}>
-            <div className="mx-auto max-w-7xl">
-                <motion.div
-                    className={`rounded-2xl backdrop-blur-2xl bg-white/10 p-2 sm:p-3 transition-all duration-500 ${isScrolled ? "shadow-2xl" : "shadow-lg"}`}
-                    style={{
-                        backgroundColor: isScrolled ? `${palette.squircle}F5` : `${palette.squircle}E5`,
-                        backdropFilter: "blur(20px)",
-                        WebkitBackdropFilter: "blur(20px)",
-                    }}
-                >
-                    <nav className="flex items-center justify-between gap-2 sm:gap-4 px-2 sm:px-4">
-                        <motion.div className="flex items-center gap-2 sm:gap-3" whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400 }}>
-                            <motion.div
-                                className="relative h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 rounded-2xl overflow-hidden p-2 sm:p-3 shadow-inner"
-                                style={{ backgroundColor: palette.accent }}
-                                whileHover={{ rotate: [0, -5, 5, 0] }}
-                                transition={{ duration: 0.5 }}
+        <motion.header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 transition-all duration-300" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
+            <div
+                className={`mx-auto max-w-7xl rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 ${isScrolled ? "shadow-lg backdrop-blur-md" : ""}`}
+                style={{
+                    backgroundColor: isScrolled ? `${palette.bg}E6` : "transparent",
+                    border: isScrolled ? `1px solid ${palette.dark}10` : "none",
+                }}
+            >
+                <div className="flex items-center gap-2">
+                    <span className="text-2xl">🍵</span>
+                    <span className="text-xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                        Chaah Paat
+                    </span>
+                </div>
+
+                <nav className="hidden md:flex items-center gap-8">
+                    {["Collection", "Our Story", "Brewing Guide"].map((item) => (
+                        <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: palette.dark }}>
+                            {item}
+                        </a>
+                    ))}
+                </nav>
+
+                <div className="flex items-center gap-4">
+                    <button onClick={toggleCart} className="relative p-2 hover:bg-black/5 rounded-full transition-colors">
+                        <FaShoppingBag className="text-xl" style={{ color: palette.dark }} />
+                        {mounted && totalItems > 0 && (
+                            <motion.span
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center rounded-full text-xs font-bold"
+                                style={{ backgroundColor: palette.accent, color: palette.bg }}
                             >
-                                <Image src="/chaah-paat.png" alt="চাপাত logo" fill className="object-contain" />
-                            </motion.div>
-                            <div className="flex flex-col leading-tight">
-                                <span className="font-bold text-base sm:text-lg lg:text-xl tracking-tight bg-linear-to-r from-emerald-700 to-teal-800 bg-clip-text text-transparent">চাপাত</span>
-                                <span className="text-[10px] sm:text-xs opacity-70 hidden sm:block" style={{ color: palette.dark }}>
-                                    Nature's Finest Leaf
-                                </span>
-                            </div>
-                        </motion.div>
-                        <div className="hidden md:flex gap-6 lg:gap-8 text-sm font-medium">
-                            {[
-                                { name: "About", icon: "📖" },
-                                { name: "Collection", icon: "🌿" },
-                                { name: "Story", icon: "📜" },
-                                { name: "Brewing", icon: "🫖" }
-                            ].map((item, i) => (
-                                <motion.a
-                                    key={item.name}
-                                    href={item.name === "About" ? "#about" : `#${item.name.toLowerCase()}`}
-                                    className="relative hover:text-opacity-100 transition-all py-2 px-3 rounded-2xl gradient-border-hover flex flex-col items-center"
-                                    style={{ color: palette.dark }}
-                                    whileHover={{ y: -2 }}
-                                    initial={{ opacity: 0, y: -20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                >
-                                    <span className="text-lg mb-1">{item.icon}</span>
-                                    <span>{item.name}</span>
-                                    <motion.span
-                                        className="absolute -bottom-1 left-0 h-0.5 bg-current"
-                                        initial={{ width: 0 }}
-                                        whileHover={{ width: "100%" }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    />
-                                </motion.a>
-                            ))}
+                                {totalItems}
+                            </motion.span>
+                        )}
+                    </button>
+
+                    {mounted && status === "authenticated" && session?.user ? (
+                        <div className="flex items-center gap-3">
+                            <motion.a
+                                href="/dashboard"
+                                className="hidden sm:flex items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium"
+                                style={{ color: palette.dark }}
+                                whileHover={{ scale: 1.05 }}
+                            >
+                                <FaUser className="h-5 w-5" />
+                                <span>Profile</span>
+                            </motion.a>
+                            <motion.button
+                                onClick={() => signOut()}
+                                className="rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-1"
+                                style={{
+                                    backgroundColor: palette.accent,
+                                    color: palette.dark,
+                                }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <FaSignOutAlt />
+                                Sign Out
+                            </motion.button>
                         </div>
-                        <div className="flex items-center gap-2">
-                            {totalItems > 0 && (
-                                <motion.button className="relative p-2 rounded-xl" style={{ backgroundColor: palette.accent }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openCart}>
-                                    <FaShoppingCart className="h-5 w-5" style={{ color: palette.dark }} />
-                                    <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 text-xs rounded-full text-white" style={{ backgroundColor: palette.dark }}>
-                                        {totalItems}
-                                    </span>
-                                </motion.button>
-                            )}
-                            {status === "authenticated" && session?.user ? (
-                                <div className="flex items-center gap-3">
-                                    <motion.a
-                                        href="/dashboard"
-                                        className="hidden sm:flex items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium"
-                                        style={{ color: palette.dark }}
-                                        whileHover={{ scale: 1.05 }}
-                                    >
-                                        <FaUser className="h-5 w-5" />
-                                        <span>Profile</span>
-                                    </motion.a>
-                                    <motion.button
-                                        onClick={handleSignOut}
-                                        className="rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium flex items-center gap-1"
-                                        style={{
-                                            backgroundColor: palette.accent,
-                                            color: palette.dark,
-                                        }}
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        <FaSignOutAlt />
-                                        Sign Out
-                                    </motion.button>
-                                </div>
-                            ) : (
-                                <motion.button
-                                    onClick={() => signIn("google", { callbackUrl: window.location.href })}
-                                    className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-1 gradient-border-hover"
-                                    style={{
-                                        backgroundColor: palette.accent,
-                                        color: palette.dark,
-                                    }}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <FaGoogle className="text-base" />
-                                    Sign In
-                                </motion.button>
-                            )}
-                        </div>
-                    </nav>
-                </motion.div>
+                    ) : (
+                        <motion.button
+                            onClick={() => signIn("google", { callbackUrl: window.location.href })}
+                            className="rounded-2xl px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all flex items-center gap-1 gradient-border-hover"
+                            style={{
+                                backgroundColor: palette.accent,
+                                color: palette.dark,
+                            }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <FaGoogle className="text-base" />
+                            Sign In
+                        </motion.button>
+                    )}
+                </div>
             </div>
         </motion.header>
     );

@@ -11,6 +11,7 @@ export async function GET(request: NextRequest) {
         origin: string;
         elevation: string;
         harvest: string;
+        gradient: string;
     };
     const teas: Tea[] = [
         {
@@ -24,6 +25,7 @@ export async function GET(request: NextRequest) {
             origin: "Assam, India",
             elevation: "500-800m",
             harvest: "Spring 2024",
+            gradient: "from-green-200 to-emerald-300",
         },
         {
             id: "2",
@@ -35,6 +37,7 @@ export async function GET(request: NextRequest) {
             origin: "Assam Hills, India",
             elevation: "1000-1200m",
             harvest: "Summer 2024",
+            gradient: "from-stone-300 to-stone-400",
         },
         {
             id: "3",
@@ -46,6 +49,7 @@ export async function GET(request: NextRequest) {
             origin: "Multi-region blend",
             elevation: "Various",
             harvest: "Year-round",
+            gradient: "from-yellow-200 to-lime-200",
         },
         {
             id: "4",
@@ -57,6 +61,7 @@ export async function GET(request: NextRequest) {
             origin: "Assam, India",
             elevation: "800-1000m",
             harvest: "Early Spring 2024",
+            gradient: "from-slate-200 to-gray-300",
         },
         {
             id: "5",
@@ -68,6 +73,7 @@ export async function GET(request: NextRequest) {
             origin: "Multi-region blend",
             elevation: "Various",
             harvest: "Summer 2024",
+            gradient: "from-teal-200 to-cyan-300",
         },
         {
             id: "6",
@@ -79,6 +85,7 @@ export async function GET(request: NextRequest) {
             origin: "Assam, India",
             elevation: "600-900m",
             harvest: "Autumn 2024",
+            gradient: "from-orange-200 to-amber-300",
         },
         {
             id: "7",
@@ -90,6 +97,7 @@ export async function GET(request: NextRequest) {
             origin: "Himalayan Foothills",
             elevation: "1500-2000m",
             harvest: "Summer 2024",
+            gradient: "from-amber-200 to-orange-300",
         },
         {
             id: "8",
@@ -101,6 +109,7 @@ export async function GET(request: NextRequest) {
             origin: "Assam, India",
             elevation: "800-1200m",
             harvest: "Spring 2024",
+            gradient: "from-emerald-200 to-teal-300",
         },
     ];
     return NextResponse.json(teas);

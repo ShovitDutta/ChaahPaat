@@ -10,6 +10,7 @@ type CartItem = {
     quantity: number;
     elevation: string;
     description: string;
+    gradient: string;
 };
 type AnimationState = {
     isAnimating: boolean;

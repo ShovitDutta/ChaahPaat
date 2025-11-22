@@ -1,45 +1,81 @@
 import { Squircle } from "@/ui/squircle";
 import { motion } from "framer-motion";
-import { FaPhone } from "react-icons/fa";
-const palette = { bg: "#FFFFFF", card: "#E8F5E0", squircle: "#D9F0CC", accent: "#A8D88A", dark: "#1D1A05", shadow: "#142506" };
+import { FaPhone, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
+
 export function Footer() {
     return (
-        <Squircle className="mx-auto max-w-7xl" innerClassName="py-2 sm:py-3" ariaLabel="footer">
-            <motion.div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }}>
-                <motion.div className="text-xs sm:text-sm opacity-60" style={{ color: palette.dark }} whileHover={{ opacity: 1 }}>
-                    © {new Date().getFullYear()} চাপাত — Mindful Tea Moments
-                </motion.div>
-                <div className="flex gap-2 sm:gap-3 lg:gap-4">
-                    <motion.a
-                        href="tel:+916900234165"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover flex items-center gap-2"
-                        style={{
-                            color: palette.dark,
-                        }}
-                        whileHover={{
-                            scale: 1.05,
-                            backgroundColor: `${palette.accent}20`,
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FaPhone className="text-xs" /> +91 6900234165
-                    </motion.a>
-                    <motion.a
-                        href="tel:+919883617119"
-                        className="rounded-2xl px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium backdrop-blur-sm transition-all gradient-border-hover flex items-center gap-2"
-                        style={{
-                            color: palette.dark,
-                        }}
-                        whileHover={{
-                            scale: 1.05,
-                            backgroundColor: `${palette.accent}20`,
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FaPhone className="text-xs" /> +91 9883617119
-                    </motion.a>
+        <footer className="relative mt-20 overflow-hidden rounded-3xl" style={{ backgroundColor: palette.card }}>
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: palette.accent }} />
+                <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: palette.squircle }} />
+            </div>
+
+            <div className="relative z-10 container mx-auto px-6 py-16">
+                <div className="grid md:grid-cols-4 gap-12">
+                    <div className="col-span-2">
+                        <div className="flex items-center gap-2 mb-6">
+                            <span className="text-3xl">🍵</span>
+                            <span className="text-2xl font-bold tracking-tight" style={{ color: palette.dark }}>
+                                Chaah Paat
+                            </span>
+                        </div>
+                        <p className="text-lg opacity-80 max-w-md leading-relaxed" style={{ color: palette.dark }}>
+                            Bringing the authentic taste of Assam's finest tea gardens directly to your cup. Sustainably sourced, ethically grown, and crafted with passion.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 className="font-bold text-lg mb-6" style={{ color: palette.dark }}>
+                            Explore
+                        </h4>
+                        <ul className="space-y-4">
+                            {["Collection", "Our Story", "Brewing Guide", "Sustainability"].map((item) => (
+                                <li key={item}>
+                                    <a href="#" className="opacity-70 hover:opacity-100 transition-opacity" style={{ color: palette.dark }}>
+                                        {item}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="font-bold text-lg mb-6" style={{ color: palette.dark }}>
+                            Connect
+                        </h4>
+                        <div className="flex gap-4 mb-6">
+                            {[FaInstagram, FaTwitter, FaFacebookF].map((Icon, i) => (
+                                <a
+                                    key={i}
+                                    href="#"
+                                    className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                                    style={{ backgroundColor: palette.bg, color: palette.dark }}
+                                >
+                                    <Icon />
+                                </a>
+                            ))}
+                        </div>
+                        <p className="opacity-70 text-sm" style={{ color: palette.dark }}>
+                            hello@chaahpaat.com
+                            <br />
+                            +91 98765 43210
+                        </p>
+                    </div>
                 </div>
-            </motion.div>
-        </Squircle>
+
+                <div className="mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 opacity-60" style={{ borderColor: `${palette.dark}20`, color: palette.dark }}>
+                    <p>© 2024 Chaah Paat. All rights reserved.</p>
+                    <div className="flex gap-6 text-sm">
+                        <a href="#" className="hover:underline">
+                            Privacy Policy
+                        </a>
+                        <a href="#" className="hover:underline">
+                            Terms of Service
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     );
 }
