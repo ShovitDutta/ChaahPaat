@@ -6,6 +6,7 @@ export function Squircle(props: {
     backgroundColor?: string;
     ariaLabel?: string;
     id?: string;
+    maxWidth?: string;
 }) {
     const {
         children,
@@ -14,10 +15,11 @@ export function Squircle(props: {
         backgroundColor = palette.squircle,
         ariaLabel,
         id,
+        maxWidth = "max-w-6xl",
     } = props;
     return (
         <section className={`relative w-full ${className}`} aria-label={ariaLabel} id={id} style={{ backgroundColor: backgroundColor, borderRadius: "2rem" }}>
-            <div className={`relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 ${innerClassName}`} style={{ minHeight: 120 }}>
+            <div className={`relative mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 ${maxWidth} ${innerClassName}`} style={{ minHeight: 120 }}>
                 {children}
             </div>
         </section>
