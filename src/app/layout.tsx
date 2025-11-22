@@ -10,7 +10,7 @@ const robotoCondensed = Roboto_Condensed({ variable: "--font-roboto-condensed", 
 const playfairDisplay = Playfair_Display({ variable: "--font-playfair-display", subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], display: "swap" });
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className={`${playfairDisplay.variable} ${robotoCondensed.variable} antialiased`}>
                 <AuthSessionProvider>
                     <TanStackProvider>

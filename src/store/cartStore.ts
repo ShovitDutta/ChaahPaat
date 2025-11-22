@@ -11,6 +11,7 @@ type CartItem = {
     elevation: string;
     description: string;
     gradient: string;
+    image: string;
 };
 type AnimationState = {
     isAnimating: boolean;

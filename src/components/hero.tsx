@@ -2,7 +2,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaLeaf, FaMugHot } from "react-icons/fa";
 
-const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
+const palette = { bg: "#F2F8F0", card: "#E0EBD0", squircle: "#CDE0B4", accent: "#88B04B", dark: "#203015", shadow: "#152010" };
 
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } };
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };

@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
         elevation: string;
         harvest: string;
         gradient: string;
+        image: string;
     };
     const teas: Tea[] = [
         {
@@ -26,6 +27,7 @@ export async function GET(request: NextRequest) {
             elevation: "500-800m",
             harvest: "Spring 2024",
             gradient: "from-green-200 to-emerald-300",
+            image: "https://5.imimg.com/data5/SELLER/Default/2025/3/499661042/TD/PJ/WU/183314314/zyanna-jasmine-green-tea-3-500x500.png",
         },
         {
             id: "2",
@@ -38,6 +40,7 @@ export async function GET(request: NextRequest) {
             elevation: "1000-1200m",
             harvest: "Summer 2024",
             gradient: "from-stone-300 to-stone-400",
+            image: "https://chadomoments.com/cdn/shop/collections/Oolong_Tea_Shutter_Temp.jpg?v=1678794458&width=750",
         },
         {
             id: "3",
@@ -50,6 +53,7 @@ export async function GET(request: NextRequest) {
             elevation: "Various",
             harvest: "Year-round",
             gradient: "from-yellow-200 to-lime-200",
+            image: "https://onoteas.com/wp-content/uploads/2021/04/chamomile-tea-cups-plants-scaled.jpg",
         },
         {
             id: "4",
@@ -62,6 +66,7 @@ export async function GET(request: NextRequest) {
             elevation: "800-1000m",
             harvest: "Early Spring 2024",
             gradient: "from-slate-200 to-gray-300",
+            image: "https://ceylonorganicstore.com/cdn/shop/files/white-lotus-10.jpg?v=1758358062&width=720",
         },
         {
             id: "5",
@@ -74,6 +79,7 @@ export async function GET(request: NextRequest) {
             elevation: "Various",
             harvest: "Summer 2024",
             gradient: "from-teal-200 to-cyan-300",
+            image: "https://cdn.shopify.com/s/files/1/0587/4381/6355/files/fertig_Refreshing_tea_spritz_with_ice_cubes_fresh_mint_leaves_1_1e5e0ec7-6d3b-497c-9d7a-be181592674d_1024x1024.webp?v=1708874686",
         },
         {
             id: "6",
@@ -86,6 +92,7 @@ export async function GET(request: NextRequest) {
             elevation: "600-900m",
             harvest: "Autumn 2024",
             gradient: "from-orange-200 to-amber-300",
+            image: "https://img.freepik.com/free-photo/cup-knitted-scarf-with-autumn-leaves_23-2148206078.jpg?semt=ais_hybrid&w=740&q=80",
         },
         {
             id: "7",
@@ -98,6 +105,7 @@ export async function GET(request: NextRequest) {
             elevation: "1500-2000m",
             harvest: "Summer 2024",
             gradient: "from-amber-200 to-orange-300",
+            image: "https://www.jiomart.com/images/product/original/rv6xwac42t/himalayan-stocks-rose-black-tea-15-tea-bags-2-gm-each-sun-dried-caffeine-free-herbal-tea-product-images-orv6xwac42t-p605850588-1-202310271538.jpg?im=Resize=(1000,1000)",
         },
         {
             id: "8",
@@ -110,6 +118,7 @@ export async function GET(request: NextRequest) {
             elevation: "800-1200m",
             harvest: "Spring 2024",
             gradient: "from-emerald-200 to-teal-300",
+            image: "https://iteaworld.com/cdn/shop/articles/oolong-tea-loose-leaf-tea_874f2eb6-ecea-44c8-adc4-ffd05b86e013.jpg?v=1762172339",
         },
     ];
     return NextResponse.json(teas);

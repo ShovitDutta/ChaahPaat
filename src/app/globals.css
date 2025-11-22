@@ -1,24 +1,24 @@
 @import "tailwindcss";
 :root {
-    --background: #fcfdf5;
-    --foreground: #2a3820;
-    --card: #eff5e6;
-    --card-foreground: #2a3820;
-    --popover: #eff5e6;
-    --popover-foreground: #2a3820;
-    --primary: #7fa850;
-    --primary-foreground: #fcfdf5;
-    --secondary: #d6e8c6;
-    --secondary-foreground: #2a3820;
-    --muted: #eff5e6;
-    --muted-foreground: #2a3820;
-    --accent: #d6e8c6;
-    --accent-foreground: #2a3820;
+    --background: #F2F8F0;
+    --foreground: #203015;
+    --card: #E0EBD0;
+    --card-foreground: #203015;
+    --popover: #F2F8F0;
+    --popover-foreground: #203015;
+    --primary: #88B04B;
+    --primary-foreground: #F2F8F0;
+    --secondary: #CDE0B4;
+    --secondary-foreground: #203015;
+    --muted: #E0EBD0;
+    --muted-foreground: #5C6B50;
+    --accent: #CDE0B4;
+    --accent-foreground: #203015;
     --destructive: #ef4444;
-    --destructive-foreground: #fcfdf5;
-    --border: #d6e8c6;
-    --input: #d6e8c6;
-    --ring: #7fa850;
+    --destructive-foreground: #F2F8F0;
+    --border: #CDE0B4;
+    --input: #CDE0B4;
+    --ring: #88B04B;
     --radius: 0.5rem;
 }
 @theme inline {
@@ -53,20 +53,20 @@ h6,
 }
 
 ::-webkit-scrollbar-track {
-    background: #EFF5E6;
+    background: #E0EBD0;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #7FA850;
+    background: #88B04B;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2A3820;
+    background: #203015;
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: #a67b5b #ebe0d0;
+    scrollbar-color: #88B04B #E0EBD0;
 }
 .gradient-border-hover {
     position: relative;

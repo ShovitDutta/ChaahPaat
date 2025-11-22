@@ -1,7 +1,7 @@
 import { Squircle } from "@/ui/squircle";
 import { motion } from "framer-motion";
 import { FaPhone, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
-const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
+const palette = { bg: "#F2F8F0", card: "#E0EBD0", squircle: "#CDE0B4", accent: "#88B04B", dark: "#203015", shadow: "#152010" };
 
 export function Footer() {
     return (

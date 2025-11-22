@@ -36,7 +36,7 @@ export default function TeaShopPage() {
                     <OurStory />
                 </div>
                 <div className="px-4 py-2 sm:py-3 lg:py-4">
-                    <Squircle className="mx-auto max-w-7xl" innerClassName="space-y-2 sm:space-y-3" ariaLabel="collection" id="collection">
+                    <Squircle className="mx-auto" innerClassName="space-y-2 sm:space-y-3" ariaLabel="collection" id="collection">
                         <TeaCollection isAuthenticated={mounted && !!session?.user} />
                     </Squircle>
                 </div>

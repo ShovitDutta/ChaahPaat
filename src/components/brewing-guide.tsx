@@ -1,7 +1,7 @@
 import { Squircle } from "./squircle";
 import { motion } from "framer-motion";
 const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
-const palette = { bg: "#FCFDF5", card: "#EFF5E6", squircle: "#D6E8C6", accent: "#7FA850", dark: "#2A3820", shadow: "#1C2615" };
+const palette = { bg: "#F2F8F0", card: "#E0EBD0", squircle: "#CDE0B4", accent: "#88B04B", dark: "#203015", shadow: "#152010" };
 
 const steps = [
     {
@@ -74,18 +74,6 @@ export function BrewingGuide() {
                         </motion.div>
                     ))}
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-16 p-8 rounded-3xl text-center max-w-3xl mx-auto"
-                    style={{ backgroundColor: `${palette.accent}15`, border: `1px dashed ${palette.accent}` }}
-                >
-                    <p className="text-lg font-medium italic" style={{ color: palette.dark }}>
-                        "Pro Tip: For the best flavor, pre-warm your teapot or cup with hot water before brewing."
-                    </p>
-                </motion.div>
             </div>
         </section>
     );

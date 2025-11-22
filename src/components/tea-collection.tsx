@@ -1,18 +1,34 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import useCartStore from "@/store/cartStore";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import { signIn } from "next-auth/react";
 import { FaTimes, FaLeaf, FaPlus, FaMapMarkerAlt, FaMountain, FaShoppingBag } from "react-icons/fa";
-type Tea = { id: string; name: string; note: string; tag: string; emoji: string; description: string; origin: string; elevation: string; harvest: string; gradient: string };
+
+type Tea = {
+    id: string;
+    name: string;
+    note: string;
+    tag: string;
+    emoji: string;
+    description: string;
+    origin: string;
+    elevation: string;
+    harvest: string;
+    gradient: string;
+    image: string;
+};
+
 type TeaCollectionProps = {
     isAuthenticated: boolean;
 };
+
 const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } };
-const palette = { bg: "#F5F0E6", card: "#EBE0D0", squircle: "#D6C4A6", accent: "#A67B5B", dark: "#4A3B2A", shadow: "#2C2218" };
-const stagger = { animate: { transition: { staggerChildren: 0.1 } } };
+const palette = { bg: "#F2F8F0", card: "#E0EBD0", squircle: "#CDE0B4", accent: "#88B04B", dark: "#203015", shadow: "#152010" };
+
 const fetchTeas = async (): Promise<Tea[]> => {
     const res = await fetch("/api/teas");
     if (!res.ok) throw new Error("Failed to fetch teas");
@@ -21,13 +37,12 @@ const fetchTeas = async (): Promise<Tea[]> => {
 
 export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
     const { data: teas, isLoading, error } = useQuery<Tea[]>({ queryKey: ["teas"], queryFn: fetchTeas, staleTime: 5 * 60 * 1000 });
-    const [selectedTea, setSelectedTea] = useState<Tea | null>(null); // Renamed from isModalOpen to selectedTea for direct modal content
+    const [selectedTea, setSelectedTea] = useState<Tea | null>(null);
 
     const addToCart = useCartStore((state) => state.addToCart);
 
     const handleAddToCart = (e: React.MouseEvent, tea: Tea) => {
         e.stopPropagation();
-        // Get button position for animation
         const rect = (e.target as HTMLElement).getBoundingClientRect();
         addToCart(
             {
@@ -40,7 +55,8 @@ export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
                 harvest: tea.harvest,
                 elevation: tea.elevation,
                 description: tea.description,
-                gradient: tea.gradient, // Ensure gradient is passed
+                gradient: tea.gradient,
+                image: tea.image,
             },
             { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
         );
@@ -48,13 +64,14 @@ export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
 
     if (isLoading) {
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
                     <div key={i} className="h-96 rounded-3xl animate-pulse" style={{ backgroundColor: palette.card }} />
                 ))}
             </div>
         );
     }
+
     if (error) {
         return (
             <div className="mx-auto max-w-7xl py-4 sm:py-6 lg:py-8">
@@ -69,55 +86,58 @@ export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
             </div>
         );
     }
+
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                 {teas?.map((tea) => (
                     <motion.div
                         key={tea.id}
                         layoutId={`card-${tea.id}`}
-                        onClick={() => setSelectedTea(tea)}
-                        className="group relative rounded-3xl overflow-hidden cursor-pointer h-full flex flex-col"
-                        style={{ backgroundColor: palette.card }}
+                        variants={fadeInUp}
                         whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        className="group relative h-full rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                        style={{ backgroundColor: palette.card }}
+                        onClick={() => setSelectedTea(tea)}
                     >
-                        {/* Image Placeholder with Gradient */}
-                        <div className={`h-48 w-full bg-linear-to-br ${tea.gradient} relative overflow-hidden`}>
-                            <div className="absolute inset-0 flex items-center justify-center text-9xl transform group-hover:scale-110 transition-transform duration-500">{tea.emoji}</div>
+                        {/* Image Section */}
+                        <div className={`h-48 relative overflow-hidden bg-linear-to-br ${tea.gradient}`}>
+                            <Image
+                                src={tea.image}
+                                alt={tea.name}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
                             <div className="absolute top-4 right-4">
-                                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/90 text-black/80 backdrop-blur-sm">{tea.tag}</span>
+                                <span className="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-white/90 backdrop-blur-sm shadow-sm" style={{ color: palette.dark }}>
+                                    {tea.tag}
+                                </span>
                             </div>
                         </div>
 
-                        <div className="p-6 flex-1 flex flex-col">
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-xl font-bold leading-tight" style={{ color: palette.dark }}>
+                        {/* Content Section */}
+                        <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
+                            <div className="mb-4">
+                                <h3 className="text-xl font-bold mb-2 line-clamp-1" style={{ color: palette.dark }}>
                                     {tea.name}
                                 </h3>
-                                <div className="flex items-center gap-1 text-xs font-medium opacity-60" style={{ color: palette.dark }}>
-                                    <FaLeaf /> {tea.harvest}
-                                </div>
+                                <p className="text-sm font-medium opacity-80 line-clamp-2" style={{ color: palette.dark }}>
+                                    {tea.note}
+                                </p>
                             </div>
 
-                            <p className="text-sm mb-4 line-clamp-2 opacity-70 flex-1" style={{ color: palette.dark }}>
-                                {tea.description}
-                            </p>
-
-                            <div className="flex items-center justify-between mt-auto pt-4 border-t" style={{ borderColor: `${palette.dark}10` }}>
-                                <div className="flex flex-col">
-                                    <span className="text-xs uppercase tracking-wider opacity-50" style={{ color: palette.dark }}>
-                                        Origin
-                                    </span>
-                                    <span className="font-semibold text-sm" style={{ color: palette.dark }}>
-                                        {tea.origin}
-                                    </span>
-                                </div>
+                            <div className="mt-auto flex items-center justify-between">
+                                <span className="text-2xl font-bold" style={{ color: palette.accent }}>
+                                    $12
+                                </span>
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={(e) => handleAddToCart(e, tea)}
-                                    className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-colors"
+                                    className="w-10 h-10 rounded-full flex items-center justify-center transition-transform active:scale-90 hover:rotate-90"
                                     style={{ backgroundColor: palette.accent, color: palette.bg }}
+                                    aria-label={`Add ${tea.name} to cart`}
                                 >
                                     <FaPlus />
                                 </motion.button>
@@ -150,10 +170,8 @@ export default function TeaCollection({ isAuthenticated }: TeaCollectionProps) {
                             </button>
 
                             <div className="grid md:grid-cols-2">
-                                <div className={`h-64 md:h-full bg-linear-to-br ${selectedTea.gradient} flex items-center justify-center relative overflow-hidden`}>
-                                    <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }} className="text-9xl md:text-[10rem]">
-                                        {selectedTea.emoji}
-                                    </motion.div>
+                                <div className={`h-64 md:h-full bg-linear-to-br ${selectedTea.gradient} relative overflow-hidden`}>
+                                    <Image src={selectedTea.image} alt={selectedTea.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                                 </div>
 
                                 <div className="p-8 md:p-10 flex flex-col h-full">
